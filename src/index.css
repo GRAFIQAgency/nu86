@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  
+  --color-nubi-black: #050505;
+  --color-nubi-yellow: #FFF200;
+  --color-nubi-acid: #F7FF5D;
+  --color-nubi-white: #FFFFFF;
+  --color-nubi-gray: #1A1A1A;
+}
+
+@layer base {
+  body {
+    @apply bg-nubi-black text-nubi-white font-sans antialiased selection:bg-nubi-yellow selection:text-nubi-black;
+  }
+  
+  h1, h2, h3, h4, .font-display {
+    @apply font-display font-bold;
+  }
+}
+
+.text-gradient-yellow {
+  @apply bg-linear-to-r from-[#F7FF5D] to-[#FFF200] bg-clip-text text-transparent;
+}
+
+.border-glow {
+  box-shadow: 0 0 15px rgba(255, 242, 0, 0.2);
+}
+
+.mask-fade-bottom {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
