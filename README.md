@@ -1,20 +1,61 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Nubi Asian Bistro 🍜
 
-# Run and deploy your AI Studio app
+A stunning, futuristic web application for a next-generation Asian dining experience. Built with React, Vite, Tailwind CSS, and Motion, this project features a bilingual interface (English and Czech) and integrations for delivery services.
 
-This contains everything you need to run your app locally.
+## ✨ Features
 
-View your app in AI Studio: https://ai.studio/apps/d0744127-d272-4fbf-ac79-a1ad0373afb6
+- **Futuristic & Bold UI**: A highly stylized, cyberpunk-inspired visual design tailored for a "hyper-fusion gastronomy" vibe.
+- **Bilingual Support**: Instant switching between English (EN) and Czech (CS) via a built-in custom translation system.
+- **Fluid Animations**: Smooth page transitions, scroll-driven visual effects, and hover interactions powered by `motion/react`.
+- **Responsive Layout**: Designed mobile-first, ensuring a pixel-perfect experience across all devices.
+- **Delivery Integration**: Integrated POS delivery widget (iKelp) directly into the app for online orders.
 
-## Run Locally
+## 🛠️ Tech Stack
 
-**Prerequisites:**  Node.js
+- **Framework**: React 18
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Animations**: Motion (`motion/react`)
+- **Icons**: Lucide React
+- **Language**: TypeScript
 
+## 🚀 Getting Started
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Follow these steps to set up the project locally:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/nubi-asian-bistro.git
+cd nubi-asian-bistro
+```
+
+### 2. Install dependencies
+
+Ensure you have Node.js installed, then run:
+
+```bash
+npm install
+```
+
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:3000`.
+
+### 4. Build for production
+
+To create a production-ready build:
+
+```bash
+npm run build
+```
+
+The generated static files will be placed in the `dist` directory.
+
+## 📝 License
+
+This project is created for demonstration purposes. Feel free to use it as inspiration!
