@@ -56,6 +56,16 @@ npm run build
 
 The generated static files will be placed in the `dist` directory.
 
+## 🌍 Automating Deployment to GitHub Pages
+
+This project is now configured to automatically deploy to GitHub Pages using GitHub Actions! You don't need a `gh-pages` branch anymore.
+
+1. Go to your GitHub repository on the web.
+2. Go to **Settings** > **Pages** (on the left sidebar).
+3. Under **Build and deployment**, set the **Source** to **GitHub Actions**.
+4. Push your code to GitHub. The GitHub Actions workflow (in `.github/workflows/deploy.yml`) will automatically build and publish your website.
+5. In `vite.config.ts`, make sure `base: './'` is set (already done!) so that assets load properly.
+
 ## 📝 License
 
 This project is created for demonstration purposes. Feel free to use it as inspiration!
