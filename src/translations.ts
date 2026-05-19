@@ -38,7 +38,7 @@ export const translations = {
           name: "Bun bo nam bo",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/bun_bo_nam_bo (1).jpg",
+          image: "./menu/bun_bo_nam_bo (1).jpg",
           price: "159 Kč",
         },
         {
@@ -46,7 +46,7 @@ export const translations = {
           name: "Gyros s prilohou",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/gyros_s_prilohou (1).jpg",
+          image: "./menu/gyros_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -54,7 +54,7 @@ export const translations = {
           name: "Gyros s prilohou",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/gyros_s_prilohou.jpg",
+          image: "./menu/gyros_s_prilohou.jpg",
           price: "159 Kč",
         },
         {
@@ -62,7 +62,7 @@ export const translations = {
           name: "Gyros v bulce",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/gyros_v_bulce (1).jpg",
+          image: "./menu/gyros_v_bulce (1).jpg",
           price: "159 Kč",
         },
         {
@@ -70,7 +70,7 @@ export const translations = {
           name: "Gyros v tortile",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/gyros_v_tortile (1).jpg",
+          image: "./menu/gyros_v_tortile (1).jpg",
           price: "159 Kč",
         },
         {
@@ -78,7 +78,7 @@ export const translations = {
           name: "Hamburger",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/hamburger (1).jpg",
+          image: "./menu/hamburger (1).jpg",
           price: "159 Kč",
         },
         {
@@ -86,7 +86,7 @@ export const translations = {
           name: "Hranolky",
           description: "",
           category: "Malá jídla",
-          image: "/menu/hranolky (1).jpg",
+          image: "./menu/hranolky (1).jpg",
           price: "159 Kč",
         },
         {
@@ -94,7 +94,7 @@ export const translations = {
           name: "Kachna s prilohou",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/kachna_s_prilohou (1).jpg",
+          image: "./menu/kachna_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -102,7 +102,7 @@ export const translations = {
           name: "Kureci kousky s prilohou",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/kureci_kousky_s_prilohou (1).jpg",
+          image: "./menu/kureci_kousky_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -110,7 +110,7 @@ export const translations = {
           name: "Kureci na kari s prilohou",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/kureci_na_kari_s_prilohou (1).jpg",
+          image: "./menu/kureci_na_kari_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -118,7 +118,7 @@ export const translations = {
           name: "Kureci steak s prilohou",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/kureci_steak_s_prilohou (1).jpg",
+          image: "./menu/kureci_steak_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -126,7 +126,7 @@ export const translations = {
           name: "Mini zavitky",
           description: "",
           category: "Malá jídla",
-          image: "/menu/mini_zavitky (1).jpg",
+          image: "./menu/mini_zavitky (1).jpg",
           price: "159 Kč",
         },
         {
@@ -134,7 +134,7 @@ export const translations = {
           name: "Nem cuong song cerstve zavitky",
           description: "",
           category: "Malá jídla",
-          image: "/menu/nem_cuong_song_cerstve_zavitky (1).jpg",
+          image: "./menu/nem_cuong_song_cerstve_zavitky (1).jpg",
           price: "159 Kč",
         },
         {
@@ -142,7 +142,7 @@ export const translations = {
           name: "Nudle",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/nudle (1).jpg",
+          image: "./menu/nudle (1).jpg",
           price: "159 Kč",
         },
         {
@@ -150,7 +150,7 @@ export const translations = {
           name: "Pad thai",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/pad_thai (1).jpg",
+          image: "./menu/pad_thai (1).jpg",
           price: "159 Kč",
         },
         {
@@ -158,7 +158,7 @@ export const translations = {
           name: "Pikantni polivka",
           description: "",
           category: "Malá jídla",
-          image: "/menu/pikantni_polivka (1).jpg",
+          image: "./menu/pikantni_polivka (1).jpg",
           price: "159 Kč",
         },
         {
@@ -166,7 +166,7 @@ export const translations = {
           name: "Pikantni zelenina s prilohou",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/pikantni_zelenina_s_prilohou (1).jpg",
+          image: "./menu/pikantni_zelenina_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -174,7 +174,7 @@ export const translations = {
           name: "Ryze",
           description: "",
           category: "Malá jídla",
-          image: "/menu/ryze (1).jpg",
+          image: "./menu/ryze (1).jpg",
           price: "159 Kč",
         },
         {
@@ -182,7 +182,7 @@ export const translations = {
           name: "Salat",
           description: "",
           category: "Malá jídla",
-          image: "/menu/salat (1).jpg",
+          image: "./menu/salat (1).jpg",
           price: "159 Kč",
         },
         {
@@ -190,7 +190,7 @@ export const translations = {
           name: "Smazeny syr s hranolkama",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/smazeny_syr_s_hranolkama.jpg",
+          image: "./menu/smazeny_syr_s_hranolkama.jpg",
           price: "159 Kč",
         },
         {
@@ -198,7 +198,7 @@ export const translations = {
           name: "Syr v bulce",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/syr_v_bulce.jpg",
+          image: "./menu/syr_v_bulce.jpg",
           price: "159 Kč",
         },
         {
@@ -206,7 +206,7 @@ export const translations = {
           name: "Thajska polivka",
           description: "",
           category: "Malá jídla",
-          image: "/menu/thajska_polivka.jpg",
+          image: "./menu/thajska_polivka.jpg",
           price: "159 Kč",
         },
         {
@@ -214,7 +214,7 @@ export const translations = {
           name: "Thajske cervene kari s prilohou",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/thajske_cervene_kari_s_prilohou.jpg",
+          image: "./menu/thajske_cervene_kari_s_prilohou.jpg",
           price: "159 Kč",
         },
         {
@@ -222,7 +222,7 @@ export const translations = {
           name: "Udon",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/udon.jpg",
+          image: "./menu/udon.jpg",
           price: "159 Kč",
         },
         {
@@ -230,7 +230,7 @@ export const translations = {
           name: "Vietnamske zavitky",
           description: "",
           category: "Malá jídla",
-          image: "/menu/vietnamske_zavitky.jpg",
+          image: "./menu/vietnamske_zavitky.jpg",
           price: "159 Kč",
         },
         {
@@ -238,7 +238,7 @@ export const translations = {
           name: "Zavitky s ryzovymi nudlemi a prilohou",
           description: "",
           category: "Malá jídla",
-          image: "/menu/zavitky_s_ryzovymi_nudlemi_a_prilohou.jpg",
+          image: "./menu/zavitky_s_ryzovymi_nudlemi_a_prilohou.jpg",
           price: "159 Kč",
         },
         {
@@ -246,7 +246,7 @@ export const translations = {
           name: "Zelenina s prilohou",
           description: "",
           category: "Hlavní chody",
-          image: "/menu/zelenina_s_prilohou.jpg",
+          image: "./menu/zelenina_s_prilohou.jpg",
           price: "159 Kč",
         }
       ]
@@ -309,7 +309,7 @@ export const translations = {
           name: "Bun bo nam bo",
           description: "",
           category: "Main Courses",
-          image: "/menu/bun_bo_nam_bo (1).jpg",
+          image: "./menu/bun_bo_nam_bo (1).jpg",
           price: "159 Kč",
         },
         {
@@ -317,7 +317,7 @@ export const translations = {
           name: "Gyros s prilohou",
           description: "",
           category: "Main Courses",
-          image: "/menu/gyros_s_prilohou (1).jpg",
+          image: "./menu/gyros_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -325,7 +325,7 @@ export const translations = {
           name: "Gyros s prilohou",
           description: "",
           category: "Main Courses",
-          image: "/menu/gyros_s_prilohou.jpg",
+          image: "./menu/gyros_s_prilohou.jpg",
           price: "159 Kč",
         },
         {
@@ -333,7 +333,7 @@ export const translations = {
           name: "Gyros v bulce",
           description: "",
           category: "Main Courses",
-          image: "/menu/gyros_v_bulce (1).jpg",
+          image: "./menu/gyros_v_bulce (1).jpg",
           price: "159 Kč",
         },
         {
@@ -341,7 +341,7 @@ export const translations = {
           name: "Gyros v tortile",
           description: "",
           category: "Main Courses",
-          image: "/menu/gyros_v_tortile (1).jpg",
+          image: "./menu/gyros_v_tortile (1).jpg",
           price: "159 Kč",
         },
         {
@@ -349,7 +349,7 @@ export const translations = {
           name: "Hamburger",
           description: "",
           category: "Main Courses",
-          image: "/menu/hamburger (1).jpg",
+          image: "./menu/hamburger (1).jpg",
           price: "159 Kč",
         },
         {
@@ -357,7 +357,7 @@ export const translations = {
           name: "Hranolky",
           description: "",
           category: "Small Plates",
-          image: "/menu/hranolky (1).jpg",
+          image: "./menu/hranolky (1).jpg",
           price: "159 Kč",
         },
         {
@@ -365,7 +365,7 @@ export const translations = {
           name: "Kachna s prilohou",
           description: "",
           category: "Main Courses",
-          image: "/menu/kachna_s_prilohou (1).jpg",
+          image: "./menu/kachna_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -373,7 +373,7 @@ export const translations = {
           name: "Kureci kousky s prilohou",
           description: "",
           category: "Main Courses",
-          image: "/menu/kureci_kousky_s_prilohou (1).jpg",
+          image: "./menu/kureci_kousky_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -381,7 +381,7 @@ export const translations = {
           name: "Kureci na kari s prilohou",
           description: "",
           category: "Main Courses",
-          image: "/menu/kureci_na_kari_s_prilohou (1).jpg",
+          image: "./menu/kureci_na_kari_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -389,7 +389,7 @@ export const translations = {
           name: "Kureci steak s prilohou",
           description: "",
           category: "Main Courses",
-          image: "/menu/kureci_steak_s_prilohou (1).jpg",
+          image: "./menu/kureci_steak_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -397,7 +397,7 @@ export const translations = {
           name: "Mini zavitky",
           description: "",
           category: "Small Plates",
-          image: "/menu/mini_zavitky (1).jpg",
+          image: "./menu/mini_zavitky (1).jpg",
           price: "159 Kč",
         },
         {
@@ -405,7 +405,7 @@ export const translations = {
           name: "Nem cuong song cerstve zavitky",
           description: "",
           category: "Small Plates",
-          image: "/menu/nem_cuong_song_cerstve_zavitky (1).jpg",
+          image: "./menu/nem_cuong_song_cerstve_zavitky (1).jpg",
           price: "159 Kč",
         },
         {
@@ -413,7 +413,7 @@ export const translations = {
           name: "Nudle",
           description: "",
           category: "Main Courses",
-          image: "/menu/nudle (1).jpg",
+          image: "./menu/nudle (1).jpg",
           price: "159 Kč",
         },
         {
@@ -421,7 +421,7 @@ export const translations = {
           name: "Pad thai",
           description: "",
           category: "Main Courses",
-          image: "/menu/pad_thai (1).jpg",
+          image: "./menu/pad_thai (1).jpg",
           price: "159 Kč",
         },
         {
@@ -429,7 +429,7 @@ export const translations = {
           name: "Pikantni polivka",
           description: "",
           category: "Small Plates",
-          image: "/menu/pikantni_polivka (1).jpg",
+          image: "./menu/pikantni_polivka (1).jpg",
           price: "159 Kč",
         },
         {
@@ -437,7 +437,7 @@ export const translations = {
           name: "Pikantni zelenina s prilohou",
           description: "",
           category: "Main Courses",
-          image: "/menu/pikantni_zelenina_s_prilohou (1).jpg",
+          image: "./menu/pikantni_zelenina_s_prilohou (1).jpg",
           price: "159 Kč",
         },
         {
@@ -445,7 +445,7 @@ export const translations = {
           name: "Ryze",
           description: "",
           category: "Small Plates",
-          image: "/menu/ryze (1).jpg",
+          image: "./menu/ryze (1).jpg",
           price: "159 Kč",
         },
         {
@@ -453,7 +453,7 @@ export const translations = {
           name: "Salat",
           description: "",
           category: "Small Plates",
-          image: "/menu/salat (1).jpg",
+          image: "./menu/salat (1).jpg",
           price: "159 Kč",
         },
         {
@@ -461,7 +461,7 @@ export const translations = {
           name: "Smazeny syr s hranolkama",
           description: "",
           category: "Main Courses",
-          image: "/menu/smazeny_syr_s_hranolkama.jpg",
+          image: "./menu/smazeny_syr_s_hranolkama.jpg",
           price: "159 Kč",
         },
         {
@@ -469,7 +469,7 @@ export const translations = {
           name: "Syr v bulce",
           description: "",
           category: "Main Courses",
-          image: "/menu/syr_v_bulce.jpg",
+          image: "./menu/syr_v_bulce.jpg",
           price: "159 Kč",
         },
         {
@@ -477,7 +477,7 @@ export const translations = {
           name: "Thajska polivka",
           description: "",
           category: "Small Plates",
-          image: "/menu/thajska_polivka.jpg",
+          image: "./menu/thajska_polivka.jpg",
           price: "159 Kč",
         },
         {
@@ -485,7 +485,7 @@ export const translations = {
           name: "Thajske cervene kari s prilohou",
           description: "",
           category: "Main Courses",
-          image: "/menu/thajske_cervene_kari_s_prilohou.jpg",
+          image: "./menu/thajske_cervene_kari_s_prilohou.jpg",
           price: "159 Kč",
         },
         {
@@ -493,7 +493,7 @@ export const translations = {
           name: "Udon",
           description: "",
           category: "Main Courses",
-          image: "/menu/udon.jpg",
+          image: "./menu/udon.jpg",
           price: "159 Kč",
         },
         {
@@ -501,7 +501,7 @@ export const translations = {
           name: "Vietnamske zavitky",
           description: "",
           category: "Small Plates",
-          image: "/menu/vietnamske_zavitky.jpg",
+          image: "./menu/vietnamske_zavitky.jpg",
           price: "159 Kč",
         },
         {
@@ -509,7 +509,7 @@ export const translations = {
           name: "Zavitky s ryzovymi nudlemi a prilohou",
           description: "",
           category: "Small Plates",
-          image: "/menu/zavitky_s_ryzovymi_nudlemi_a_prilohou.jpg",
+          image: "./menu/zavitky_s_ryzovymi_nudlemi_a_prilohou.jpg",
           price: "159 Kč",
         },
         {
@@ -517,7 +517,7 @@ export const translations = {
           name: "Zelenina s prilohou",
           description: "",
           category: "Main Courses",
-          image: "/menu/zelenina_s_prilohou.jpg",
+          image: "./menu/zelenina_s_prilohou.jpg",
           price: "159 Kč",
         }
       ]

@@ -181,7 +181,7 @@ const Hero = ({ lang }: { lang: Language }) => {
         className="absolute inset-0 z-0 opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
       >
         <img
-          src="/hero.avif"
+          src="./hero.avif"
           onError={(e) => {
             // Fallback while you haven't uploaded 'hero.avif' to the public folder
             e.currentTarget.src = "https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&q=80&w=2000";
