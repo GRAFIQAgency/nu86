@@ -37,17 +37,6 @@ interface MenuItem {
   image: string;
 }
 
-const MENU_IMAGES = [
-  "https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800",
-];
-
-const PRICES = ["$14", "$22", "$32", "$38", "$18", "$20"];
-
 // --- Components ---
 
 const LanguageSwitcher = ({
@@ -192,7 +181,11 @@ const Hero = ({ lang }: { lang: Language }) => {
         className="absolute inset-0 z-0 opacity-40 grayscale hover:grayscale-0 transition-all duration-1000"
       >
         <img
-          src="https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&q=80&w=2000"
+          src="/hero.avif"
+          onError={(e) => {
+            // Fallback while you haven't uploaded 'hero.avif' to the public folder
+            e.currentTarget.src = "https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&q=80&w=2000";
+          }}
           alt="Atmospheric Food"
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -265,10 +258,8 @@ const MenuSection = ({ lang }: { lang: Language }) => {
     setActiveCategory(t.categories.all);
   }, [lang, t.categories.all]);
 
-  const items: MenuItem[] = t.items.map((item, i) => ({
+  const items: MenuItem[] = t.items.map((item) => ({
     ...item,
-    price: PRICES[i],
-    image: MENU_IMAGES[i],
   }));
 
   const filteredItems =
@@ -318,14 +309,14 @@ const MenuSection = ({ lang }: { lang: Language }) => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 className="group relative bg-[#0F0F0F] p-6 border border-nubi-white/5 hover:border-nubi-yellow/50 transition-all duration-300"
               >
-                <div className="relative overflow-hidden mb-6 aspect-video grayscale group-hover:grayscale-0 transition-all duration-500">
+                <div className="relative overflow-hidden mb-6 aspect-video grayscale group-hover:grayscale-0 transition-all duration-500 rounded-full">
                   <img
                     src={item.image}
                     alt={item.name}
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute top-4 right-4 bg-nubi-yellow text-nubi-black px-3 py-1 text-[10px] font-black">
+                  <div className="absolute top-4 right-8 bg-nubi-yellow text-nubi-black px-3 py-1 text-[10px] font-black rounded-sm">
                     {item.price}
                   </div>
                 </div>
@@ -415,10 +406,14 @@ const IKelpDeliverySection = () => {
     postscribe(
       el,
       `
-      <div id='pm-delivery-pubstat' class='pm-delivery-pubstat-wr'></div> 
-      <script type='text/javascript' src='https://api.ikelp.com/Scripts/js/ikelp.posmobile.1.0.js'></script>
-      <script type='text/javascript'>(function () { posmobile.api.init({ appId: 'czxoxjz', delBtnId: 'pm-delivery-pubstat' }); })();</script>
-    `,
+      <iframe src='https://www.zavolatobsluhu.cz/mp/czxoxjz.pos/MzqJ3q46kE' 
+       id='pm-menu-jidelni-listek' border='0' style='width: 100%; border: none; max-width: 1000px; min-width: 250px; min-height: 400px; margin: 15px auto; padding: 0px; box-sizing: border-box; display: block; background-color: #09090B;' 
+       allowTransparency='true'></iframe>
+      <script type='text/javascript' src='https://api.ikelp.com/libs/js/iframeResizer.min.js'></script>
+      <script type='text/javascript'>
+       iFrameResize( { checkOrigin: false }, '#pm-menu-jidelni-listek');
+      </script>
+      `,
     );
 
     return () => {
