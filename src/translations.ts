@@ -9,7 +9,7 @@ export const translations = {
   cs: {
     nav: {
       menu: 'Menu',
-      philosophy: 'Filozofie',
+      philosophy: 'O Nás',
       delivery: 'Rozvoz',
       contact: 'Kontakt',
       cta: 'Objednat rozvoz',
@@ -225,35 +225,35 @@ export const translations = {
       ]
     },
     experience: {
-      badge: 'Systémová Architektura',
-      title: 'Hyper-fúzní Gastronomie',
-      description: 'Nubi není jen bistro; je to smyslové přetížení. Vezmeme staleté techniky a srazíme je s futuristickými chutěmi. Surová preciznost se setkává s elektrickou atmosférou.',
-      intensity: 'Intenzita',
+      badge: 'Naše Rodina',
+      title: 'Tradiční Asijské Rodinné Bistro',
+      description: 'NU86 je autentické asijské bistro s tradicí. Přinášíme vám poctivé recepty, které se v naší rodině předávají z generace na generaci. Vaříme s láskou a respektem k původním surovinám.',
+      intensity: 'Péče',
       features: [
         {
-          title: 'Zero Drift',
-          description: 'Technika tak precizní, že popírá realitu. Každý řez, každé koření, vypočítané.',
+          title: 'Domácí Recepty',
+          description: 'Tradiční postupy a poctivá domácí příprava. Každé jídlo chutná tak, jak ho známe z domova.',
         },
         {
-          title: 'Elektrický Puls',
-          description: 'Atmosféra nabitá vysokofrekvenční energií a hlubokými basy.',
+          title: 'Čerstvé Suroviny',
+          description: 'Zakládáme si na kvalitních a čerstvých ingrediencích, které jsou základem pravé asijské kuchyně.',
         }
       ]
     },
     footer: {
-      description: 'Další generace asijského stravování. Precizně navržené talíře. Vysokofrekvenční atmosféra. Duše Tokia, globální energie.',
+      description: 'Autentické rodinné asijské bistro. Tradiční recepty předávané z generace na generaci. Čerstvé suroviny, vařeno s láskou.',
       coordinatesTitle: 'Souřadnice',
       address: 'Unit 404, Cyber Heights, Imperial District, LDN',
       availabilityTitle: 'Dostupnost',
       days: ['Všední dny', 'Víkendy', 'Neděle'],
-      rights: '© 2026 NUBI SYSTEMS INC. // DATA CHRÁNĚNA',
+      rights: '© 2026 NU86 SYSTEMS INC. // DATA CHRÁNĚNA',
       links: ['Neurální Pravidla', 'Obchodní Podmínky', 'Cookies_v2'],
     }
   },
   en: {
     nav: {
       menu: 'Menu',
-      philosophy: 'Philosophy',
+      philosophy: 'About Us',
       delivery: 'Delivery',
       contact: 'Contact',
       cta: 'Order Delivery',
@@ -469,28 +469,28 @@ export const translations = {
       ]
     },
     experience: {
-      badge: 'System Architecture',
-      title: 'Hyper-Fusion Gastronomy',
-      description: "Nubi isn't just a bistro; it's a sensory overload. We take century-old techniques and collide them with futuristic flavors. Raw precision meets electric atmosphere.",
-      intensity: 'Intensity',
+      badge: 'Our Family',
+      title: 'Traditional Asian Family Bistro',
+      description: "NU86 is an authentic Asian bistro rooted in tradition. We bring you honest recipes handed down through generations in our family. We cook with love and deep respect for the original ingredients.",
+      intensity: 'Care',
       features: [
         {
-          title: 'Zero Drift',
-          description: 'Technique so precise it defies reality. Every cut, every seasoning, calculated.',
+          title: 'Home Recipes',
+          description: 'Traditional methods and genuine home preparation. Every meal tastes just like home.',
         },
         {
-          title: 'Electric Pulse',
-          description: 'An atmosphere charged with high-frequency energy and deep bass.',
+          title: 'Fresh Ingredients',
+          description: 'We believe in high-quality, fresh ingredients, which form the foundation of true Asian cuisine.',
         }
       ]
     },
     footer: {
-      description: 'The next generation of Asian dining. Precision engineered plates. High frequency atmosphere. Tokyo soul, global energy.',
+      description: 'Authentic Asian family bistro. Traditional recipes passed down through generations. Fresh ingredients, cooked with love.',
       coordinatesTitle: 'Coordinates',
       address: 'Unit 404, Cyber Heights, Imperial District, LDN',
       availabilityTitle: 'Availability',
       days: ['Weekdays', 'Weekends', 'Sundays'],
-      rights: '© 2026 NUBI SYSTEMS INC. // DATA PROTECTED',
+      rights: '© 2026 NU86 SYSTEMS INC. // DATA PROTECTED',
       links: ['Neural Policy', 'Service Terms', 'Cookies_v2'],
     }
   }

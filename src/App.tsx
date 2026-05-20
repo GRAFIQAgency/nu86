@@ -131,7 +131,7 @@ const Navbar = ({
   const navLinks = [
     { name: t.menu, href: "#menu" },
     { name: t.philosophy, href: "#philosophy" },
-    { name: t.delivery, href: "#reservations" },
+    { name: t.delivery, href: "#rozvoz" },
     { name: t.contact, href: "#contact" },
   ];
 
@@ -299,11 +299,25 @@ const MenuSection = ({ lang }: { lang: Language }) => {
     t.categories.drinks,
   ];
   const [activeCategory, setActiveCategory] = useState(t.categories.all);
+  const [isMobile, setIsMobile] = useState(false);
+  const [showAllMobile, setShowAllMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Sync active category on language change if it matches a category translation
   useEffect(() => {
     setActiveCategory(t.categories.all);
+    setShowAllMobile(false);
   }, [lang, t.categories.all]);
+
+  useEffect(() => {
+    setShowAllMobile(false);
+  }, [activeCategory]);
 
   const items: MenuItem[] = t.items.map((item) => ({
     ...item,
@@ -313,6 +327,8 @@ const MenuSection = ({ lang }: { lang: Language }) => {
     activeCategory === t.categories.all
       ? items
       : items.filter((item) => item.category === activeCategory);
+
+  const visibleItems = isMobile && !showAllMobile ? filteredItems.slice(0, 3) : filteredItems;
 
   return (
     <section id="menu" className="py-32 px-6 bg-nubi-black">
@@ -343,17 +359,16 @@ const MenuSection = ({ lang }: { lang: Language }) => {
         </div>
 
         <motion.div
-          layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          <AnimatePresence mode="popLayout">
-            {filteredItems.map((item) => (
+          <AnimatePresence>
+            {visibleItems.map((item) => (
               <motion.div
                 key={item.id}
-                layout
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 onClick={() => document.getElementById("rozvoz")?.scrollIntoView({ behavior: "smooth" })}
                 className="group relative bg-[#0F0F0F] p-6 border border-nubi-white/5 hover:border-nubi-yellow/50 transition-all duration-300 cursor-pointer"
               >
@@ -381,6 +396,21 @@ const MenuSection = ({ lang }: { lang: Language }) => {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {isMobile && !showAllMobile && filteredItems.length > 3 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-16 flex justify-center"
+          >
+            <button
+              onClick={() => setShowAllMobile(true)}
+              className="border-2 border-nubi-yellow text-nubi-yellow px-10 py-3.5 font-black uppercase text-xs tracking-widest hover:bg-nubi-yellow hover:text-nubi-black transition-all"
+            >
+              {lang === "cs" ? "Načíst další" : "Load More"}
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
@@ -395,7 +425,10 @@ const ExperienceSection = ({ lang }: { lang: Language }) => {
           <div className="absolute -top-10 -left-10 w-40 h-40 border-l-4 border-t-4 border-nubi-yellow" />
           <div className="aspect-square bg-nubi-gray overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1200"
+              src="/menu/about-us.jpg"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1200";
+              }}
               alt="Kitchen energy"
               className="w-full h-full object-cover grayscale opacity-80"
               referrerPolicy="no-referrer"
@@ -452,7 +485,7 @@ const IKelpDeliverySection = () => {
       el,
       `
       <iframe src='https://www.zavolatobsluhu.cz/mp/czxoxjz.pos/MzqJ3q46kE' 
-       id='pm-menu-jidelni-listek' border='0' style='width: 100%; border: none; max-width: 1000px; min-width: 250px; min-height: 400px; margin: 15px auto; padding: 0px; box-sizing: border-box; display: block; background-color: #09090B;' 
+       id='pm-menu-jidelni-listek' border='0' style='width: 100%; border: none; max-width: 100%; min-width: 250px; min-height: 400px; margin: 15px auto; padding: 0px; box-sizing: border-box; display: block; background-color: #09090B; border-radius: 1rem; overflow: hidden;' 
        allowTransparency='true'></iframe>
       <script type='text/javascript' src='https://api.ikelp.com/libs/js/iframeResizer.min.js'></script>
       <script type='text/javascript'>
@@ -468,7 +501,7 @@ const IKelpDeliverySection = () => {
 
   return (
     <section
-      id="reservations"
+      id="rozvoz"
       className="py-32 bg-nubi-yellow w-full flex flex-col items-center justify-center min-h-[400px]"
     >
       <div className="w-full max-w-4xl mx-auto px-6 text-center text-nubi-black">
@@ -476,15 +509,10 @@ const IKelpDeliverySection = () => {
           Delivery / Rozvoz
         </h2>
 
-        <div className="bg-nubi-black/5 p-4 md:p-12 rounded-2xl border-2 border-nubi-black/10 w-full min-h-[150px] flex flex-col justify-center items-center">
-          <p className="text-sm font-bold uppercase tracking-widest mb-6 opacity-60">
-            Objednejte si rozvoz nebo s sebou
-          </p>
-          <div
-            id="ikelp-container-anchor"
-            className="w-full flex justify-center items-center"
-          />
-        </div>
+        <div
+          id="ikelp-container-anchor"
+          className="w-full min-h-[150px] flex justify-center items-center"
+        />
       </div>
     </section>
   );
@@ -533,7 +561,7 @@ const ContactSection = ({ lang }: { lang: Language }) => {
             <div className="flex gap-4 items-center">
               <Phone size={20} className="text-nubi-yellow shrink-0" />
               <span className="text-xs tracking-widest text-nubi-white/60">
-                +44 800 NUBI 2026
+                +44 800 NU86 2026
               </span>
             </div>
           </div>
