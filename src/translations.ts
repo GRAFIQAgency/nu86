@@ -226,7 +226,7 @@ export const translations = {
     },
     experience: {
       badge: 'Naše Rodina',
-      title: 'Tradiční Asijské Rodinné Bistro',
+      title: 'Asijské Rodinné Bistro',
       description: 'NU86 je autentické asijské bistro s tradicí. Přinášíme vám poctivé recepty, které se v naší rodině předávají z generace na generaci. Vaříme s láskou a respektem k původním surovinám.',
       intensity: 'Péče',
       features: [
@@ -470,7 +470,7 @@ export const translations = {
     },
     experience: {
       badge: 'Our Family',
-      title: 'Traditional Asian Family Bistro',
+      title: 'Asian Family Bistro',
       description: "NU86 is an authentic Asian bistro rooted in tradition. We bring you honest recipes handed down through generations in our family. We cook with love and deep respect for the original ingredients.",
       intensity: 'Care',
       features: [

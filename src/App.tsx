@@ -425,7 +425,7 @@ const ExperienceSection = ({ lang }: { lang: Language }) => {
           <div className="absolute -top-10 -left-10 w-40 h-40 border-l-4 border-t-4 border-nubi-yellow" />
           <div className="aspect-square bg-nubi-gray overflow-hidden">
             <img
-              src="/menu/about-us.jpg"
+              src="./menu/about-us.jpg"
               onError={(e) => {
                 e.currentTarget.src = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1200";
               }}
