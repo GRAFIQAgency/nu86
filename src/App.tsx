@@ -10,6 +10,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
+import { gsap } from "gsap";
 // @ts-ignore
 import postscribe from "postscribe";
 import {
@@ -31,13 +32,59 @@ import { translations, Language } from "./translations";
 interface MenuItem {
   id: number;
   name: string;
-  price: string;
   description: string;
   category: string;
   image: string;
 }
 
 // --- Components ---
+
+const Loader = ({ onComplete }: { onComplete: () => void }) => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let obj = { val: 0 };
+    const tl = gsap.timeline({
+      onComplete: () => {
+        gsap.to(".loader-container", {
+          opacity: 0,
+          y: "-100%",
+          duration: 1,
+          ease: "power3.inOut",
+          onComplete: onComplete
+        });
+      }
+    });
+
+    tl.to(obj, {
+      val: 100,
+      duration: 2.5,
+      ease: "power2.inOut",
+      onUpdate: () => {
+        setProgress(Math.floor(obj.val));
+      }
+    });
+  }, [onComplete]);
+
+  return (
+    <div className="loader-container fixed inset-0 z-[100] flex flex-col justify-end bg-nubi-black pb-12">
+      <div className="px-6 flex items-end gap-6 w-full max-w-7xl mx-auto">
+        <div className="flex-1 pb-3">
+          <div className="h-1 bg-nubi-white/10 w-full overflow-hidden">
+            <div 
+              className="h-full bg-nubi-yellow origin-left"
+              style={{ width: `${progress}%` }} 
+            />
+          </div>
+        </div>
+        <div className="text-nubi-yellow font-black font-display text-5xl md:text-7xl w-24 md:w-32 text-right">
+          {progress}%
+        </div>
+      </div>
+    </div>
+  );
+};
+
 
 const LanguageSwitcher = ({
   lang,
@@ -307,18 +354,16 @@ const MenuSection = ({ lang }: { lang: Language }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="group relative bg-[#0F0F0F] p-6 border border-nubi-white/5 hover:border-nubi-yellow/50 transition-all duration-300"
+                onClick={() => document.getElementById("rozvoz")?.scrollIntoView({ behavior: "smooth" })}
+                className="group relative bg-[#0F0F0F] p-6 border border-nubi-white/5 hover:border-nubi-yellow/50 transition-all duration-300 cursor-pointer"
               >
-                <div className="relative overflow-hidden mb-6 aspect-video grayscale group-hover:grayscale-0 transition-all duration-500 rounded-full">
+                <div className="relative overflow-hidden mb-6 aspect-video grayscale group-hover:grayscale-0 transition-all duration-500">
                   <img
                     src={item.image}
                     alt={item.name}
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute top-4 right-8 bg-nubi-yellow text-nubi-black px-3 py-1 text-[10px] font-black rounded-sm">
-                    {item.price}
-                  </div>
                 </div>
                 <h3 className="text-xl font-black uppercase mb-3 tracking-tight group-hover:text-nubi-yellow transition-colors">
                   {item.name}
@@ -534,9 +579,19 @@ const ContactSection = ({ lang }: { lang: Language }) => {
 
 export default function App() {
   const [lang, setLang] = useState<Language>("cs");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [loading]);
 
   return (
     <div className="bg-nubi-black text-nubi-white font-sans selection:bg-nubi-yellow selection:text-nubi-black">
+      {loading && <Loader onComplete={() => setLoading(false)} />}
       <Navbar lang={lang} setLang={setLang} />
       <Hero lang={lang} />
       <MenuSection lang={lang} />
