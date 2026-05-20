@@ -241,15 +241,6 @@ const Hero = ({ lang }: { lang: Language }) => {
       <div className="absolute inset-0 bg-linear-to-t from-nubi-black via-nubi-black/60 to-transparent z-10" />
 
       <div className="relative z-20 text-center px-6">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="mb-12 flex justify-center"
-        >
-          <Logo className="w-64 h-auto" />
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
