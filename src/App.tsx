@@ -264,7 +264,7 @@ const Hero = ({ lang }: { lang: Language }) => {
             {t.explore}
           </a>
           <a
-            href="#reservations"
+            href="#rozvoz"
             className="border-2 border-nubi-yellow text-nubi-yellow px-10 py-3.5 font-black uppercase text-xs tracking-widest hover:bg-nubi-yellow hover:text-nubi-black transition-all"
           >
             {t.order}
