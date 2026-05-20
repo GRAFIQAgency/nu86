@@ -245,7 +245,7 @@ const Hero = ({ lang }: { lang: Language }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-8xl font-display font-black tracking-tight uppercase mb-8"
+          className="text-5xl md:text-8xl font-display font-black tracking-tight uppercase mb-8 leading-[1.2] md:leading-[1.2]"
         >
           {t.title1} <br />
           <span className="text-gradient-yellow">{t.title2}</span>
@@ -580,17 +580,6 @@ const ContactSection = ({ lang }: { lang: Language }) => {
 
       <div className="max-w-7xl mx-auto pt-20 mt-20 border-t border-nubi-white/5 flex flex-col md:flex-row justify-between gap-6 text-[9px] uppercase tracking-[0.3em] font-black text-nubi-white/20">
         <p>{t.rights}</p>
-        <div className="flex gap-10">
-          {t.links.map((link, i) => (
-            <a
-              key={i}
-              href="#"
-              className="hover:text-nubi-yellow transition-colors"
-            >
-              {link}
-            </a>
-          ))}
-        </div>
       </div>
     </footer>
   );

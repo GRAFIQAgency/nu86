@@ -16,7 +16,7 @@ export const translations = {
     },
     hero: {
       title1: 'Ochutnejte',
-      title2: 'Budoucnost',
+      title2: 'jídlo s příběhem',
       explore: 'Prozkoumat Menu',
       order: 'Objednat nyní',
       est: 'EST 2026 // NEO TOKIO',
@@ -259,8 +259,8 @@ export const translations = {
       cta: 'Order Delivery',
     },
     hero: {
-      title1: 'Taste the',
-      title2: 'Future',
+      title1: 'Taste food',
+      title2: 'with a story',
       explore: 'Explore Menu',
       order: 'Order Now',
       est: 'EST 2026 // NEO TOKIO',
