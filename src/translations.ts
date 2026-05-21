@@ -243,7 +243,7 @@ export const translations = {
     footer: {
       description: 'Autentické rodinné asijské bistro. Tradiční recepty předávané z generace na generaci. Čerstvé suroviny, vařeno s láskou.',
       coordinatesTitle: 'Souřadnice',
-      address: 'Unit 404, Cyber Heights, Imperial District, LDN',
+      address: 'Kšírova 218, 619 00 Brno-jih-Horní Heršpice',
       availabilityTitle: 'Dostupnost',
       days: ['Všední dny', 'Víkendy', 'Neděle'],
       rights: '© 2026 NU86 SYSTEMS INC. // DATA CHRÁNĚNA',
@@ -487,7 +487,7 @@ export const translations = {
     footer: {
       description: 'Authentic Asian family bistro. Traditional recipes passed down through generations. Fresh ingredients, cooked with love.',
       coordinatesTitle: 'Coordinates',
-      address: 'Unit 404, Cyber Heights, Imperial District, LDN',
+      address: 'Kšírova 218, 619 00 Brno-jih-Horní Heršpice',
       availabilityTitle: 'Availability',
       days: ['Weekdays', 'Weekends', 'Sundays'],
       rights: '© 2026 NU86 SYSTEMS INC. // DATA PROTECTED',

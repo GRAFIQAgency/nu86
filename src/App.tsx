@@ -523,18 +523,17 @@ const ContactSection = ({ lang }: { lang: Language }) => {
             {t.description}
           </p>
           <div className="flex gap-6">
-            <Instagram
-              size={22}
-              className="text-nubi-white/40 hover:text-nubi-yellow transition-colors"
-            />
-            <Facebook
-              size={22}
-              className="text-nubi-white/40 hover:text-nubi-yellow transition-colors"
-            />
-            <Twitter
-              size={22}
-              className="text-nubi-white/40 hover:text-nubi-yellow transition-colors"
-            />
+            <a
+              href="https://www.facebook.com/groups/202127294382401/user/61571856325566/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <Facebook
+                size={22}
+                className="text-nubi-white/40 hover:text-nubi-yellow transition-colors"
+              />
+            </a>
           </div>
         </div>
 
@@ -552,7 +551,7 @@ const ContactSection = ({ lang }: { lang: Language }) => {
             <div className="flex gap-4 items-center">
               <Phone size={20} className="text-nubi-yellow shrink-0" />
               <span className="text-xs tracking-widest text-nubi-white/60">
-                +44 800 NU86 2026
+                +420 731 076 819
               </span>
             </div>
           </div>
