@@ -361,9 +361,9 @@ const MenuSection = ({ lang }: { lang: Language }) => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 onClick={() => document.getElementById("rozvoz")?.scrollIntoView({ behavior: "smooth" })}
-                className="group relative bg-[#0F0F0F] p-6 border border-nubi-white/5 hover:border-nubi-yellow/50 transition-all duration-300 cursor-pointer"
+                className="group relative bg-[#0F0F0F] p-6 border border-nubi-white/5 hover:border-nubi-yellow/50 [@media(hover:none)]:border-nubi-yellow/50 transition-all duration-300 cursor-pointer"
               >
-                <div className="relative overflow-hidden mb-6 aspect-video grayscale group-hover:grayscale-0 transition-all duration-500">
+                <div className="relative overflow-hidden mb-6 aspect-video grayscale group-hover:grayscale-0 [@media(hover:none)]:grayscale-0 transition-all duration-500">
                   <img
                     src={item.image}
                     alt={item.name}
@@ -371,13 +371,13 @@ const MenuSection = ({ lang }: { lang: Language }) => {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <h3 className="text-xl font-black uppercase mb-3 tracking-tight group-hover:text-nubi-yellow transition-colors">
+                <h3 className="text-xl font-black uppercase mb-3 tracking-tight group-hover:text-nubi-yellow [@media(hover:none)]:text-nubi-yellow transition-colors">
                   {item.name}
                 </h3>
                 <p className="text-nubi-white/50 text-xs leading-relaxed font-medium">
                   {item.description}
                 </p>
-                <div className="mt-6 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-6 flex items-center justify-between opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-100 transition-opacity">
                   <span className="text-[10px] text-nubi-yellow font-black uppercase tracking-widest">
                     {t.order}
                   </span>
@@ -562,7 +562,7 @@ const ContactSection = ({ lang }: { lang: Language }) => {
             {t.availabilityTitle}
           </h3>
           <div className="space-y-4">
-            {["18:00 — 02:00", "18:00 — 04:00", "12:00 — 23:00"].map(
+            {["10h - 21h", "11h - 21h"].map(
               (time, i) => (
                 <div
                   key={i}
