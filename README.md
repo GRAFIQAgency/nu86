@@ -1,4 +1,4 @@
-# Nubi Asian Bistro 🍜
+# NU86 Asian Bistro 🍜
 
 A stunning, futuristic web application for a next-generation Asian dining experience. Built with React, Vite, Tailwind CSS, and Motion, this project features a bilingual interface (English and Czech) and integrations for delivery services.
 
