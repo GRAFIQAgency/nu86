@@ -461,49 +461,26 @@ const ExperienceSection = ({ lang }: { lang: Language }) => {
   );
 };
 
-declare global {
-  interface Window {
-    posmobile: any;
-  }
-}
-
 const IKelpDeliverySection = () => {
-  useEffect(() => {
-    const el = document.getElementById("ikelp-container-anchor");
-    if (!el) return;
-
-    postscribe(
-      el,
-      `
-      <iframe src='https://www.zavolatobsluhu.cz/mp/czxoxjz.pos/MzqJ3q46kE' 
-       id='pm-menu-jidelni-listek' border='0' style='width: 100%; border: none; max-width: 100%; min-width: 250px; min-height: 400px; margin: 15px auto; padding: 0px; box-sizing: border-box; display: block; background-color: #09090B; border-radius: 1rem; overflow: hidden;' 
-       allowTransparency='true'></iframe>
-      <script type='text/javascript' src='https://api.ikelp.com/libs/js/iframeResizer.min.js'></script>
-      <script type='text/javascript'>
-       iFrameResize( { checkOrigin: false }, '#pm-menu-jidelni-listek');
-      </script>
-      `,
-    );
-
-    return () => {
-      if (el) el.innerHTML = "";
-    };
-  }, []);
-
   return (
     <section
       id="rozvoz"
-      className="py-32 bg-nubi-yellow w-full flex flex-col items-center justify-center min-h-[400px]"
+      className="py-24 bg-nubi-yellow w-full flex flex-col items-center justify-center min-h-[600px]"
     >
-      <div className="w-full max-w-4xl mx-auto px-6 text-center text-nubi-black">
-        <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-12">
+      <div className="w-full max-w-6xl mx-auto px-4 md:px-6 text-center text-nubi-black">
+        <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-8">
           Delivery / Rozvoz
         </h2>
 
-        <div
-          id="ikelp-container-anchor"
-          className="w-full min-h-[150px] flex justify-center items-center"
-        />
+        <div className="w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-black/10">
+          <iframe
+            src="https://czxoxjz.ikelp.com/rozvoz"
+            id="pm-menu-jidelni-listek"
+            title="Jídelní lístek & Objednávka"
+            className="w-full min-h-[850px] md:min-h-[1000px] border-0 block"
+            allow="geolocation; payment"
+          />
+        </div>
       </div>
     </section>
   );
