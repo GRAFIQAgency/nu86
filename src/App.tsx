@@ -486,19 +486,75 @@ const IKelpDeliverySection = () => {
   );
 };
 
+declare global {
+  interface Window {
+    posmobile?: {
+      api: {
+        init: (options: { appId: string; delBtnId: string }) => void;
+      };
+    };
+  }
+}
+
 const ContactSection = ({ lang }: { lang: Language }) => {
   const t = translations[lang].footer;
+
+  useEffect(() => {
+    const initPOS = () => {
+      if (typeof window !== "undefined" && window.posmobile?.api) {
+        try {
+          window.posmobile.api.init({
+            appId: "czxoxjz",
+            delBtnId: "pm-delivery-pubstat",
+          });
+        } catch (e) {
+          console.error("Error initializing posmobile in footer:", e);
+        }
+      }
+    };
+
+    if (typeof window !== "undefined" && window.posmobile?.api) {
+      initPOS();
+    } else {
+      const existingScript = document.querySelector(
+        'script[src="https://api.ikelp.com/Scripts/js/ikelp.posmobile.1.0.js"]'
+      );
+      if (!existingScript) {
+        const script = document.createElement("script");
+        script.src = "https://api.ikelp.com/Scripts/js/ikelp.posmobile.1.0.js";
+        script.type = "text/javascript";
+        script.async = true;
+        script.onload = () => {
+          initPOS();
+        };
+        document.head.appendChild(script);
+      } else {
+        existingScript.addEventListener("load", initPOS);
+        initPOS();
+      }
+    }
+  }, []);
+
   return (
     <footer
       id="contact"
       className="py-32 bg-nubi-black px-6 border-t border-nubi-white/5"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8">
-        <div className="md:col-span-2 flex flex-col items-start gap-10">
+        <div className="md:col-span-2 flex flex-col items-start gap-8">
           <Logo className="w-48 h-auto" />
           <p className="text-nubi-white/40 text-sm leading-relaxed max-w-sm font-medium tracking-tight">
             {t.description}
           </p>
+
+          {/* iKelp Delivery Status Button Widget */}
+          <div className="pt-2">
+            <div
+              id="pm-delivery-pubstat"
+              className="pm-delivery-pubstat-wr inline-flex items-center"
+            />
+          </div>
+
           <div className="flex gap-6">
             <a
               href="https://www.facebook.com/groups/202127294382401/user/61571856325566/"
