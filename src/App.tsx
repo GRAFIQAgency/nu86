@@ -27,10 +27,12 @@ import {
   ExternalLink,
   ShoppingBag,
   Sparkles,
+  Flame,
+  Leaf,
+  Search,
 } from "lucide-react";
 import { Logo } from "./components/Logo";
 import { RezervacePage } from "./components/RezervacePage";
-import { NativeMenu } from "./components/NativeMenu";
 import { translations, Language } from "./translations";
 import { IKELP_ORDER_URL } from "./config";
 import { MENU_CATEGORIES, DISHES_LIST, DishItem } from "./data/menuData";
@@ -140,7 +142,7 @@ const Navbar = ({
   const navLinks = [
     { name: t.menu, href: "#menu" },
     { name: t.philosophy, href: "#philosophy" },
-    { name: t.delivery, href: "#rozvoz" },
+    { name: t.delivery, href: IKELP_ORDER_URL, isExternal: true },
     { name: t.contact, href: "#contact" },
   ];
 
@@ -159,9 +161,12 @@ const Navbar = ({
             <a
               key={link.name}
               href={link.href}
-              className="text-xs font-bold uppercase tracking-widest text-nubi-white/70 hover:text-nubi-yellow transition-colors"
+              target={link.isExternal ? "_blank" : undefined}
+              rel={link.isExternal ? "noopener noreferrer" : undefined}
+              className="text-xs font-bold uppercase tracking-widest text-nubi-white/70 hover:text-nubi-yellow transition-colors flex items-center gap-1"
             >
-              {link.name}
+              <span>{link.name}</span>
+              {link.isExternal && <ExternalLink size={12} className="opacity-60" />}
             </a>
           ))}
           <button
@@ -204,10 +209,13 @@ const Navbar = ({
               <a
                 key={link.name}
                 href={link.href}
-                className="text-4xl font-display font-black uppercase tracking-tight text-white hover:text-nubi-yellow"
+                target={link.isExternal ? "_blank" : undefined}
+                rel={link.isExternal ? "noopener noreferrer" : undefined}
+                className="text-3xl font-display font-black uppercase tracking-tight text-white hover:text-nubi-yellow flex items-center justify-between"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {link.name}
+                <span>{link.name}</span>
+                {link.isExternal && <ExternalLink size={18} className="opacity-60" />}
               </a>
             ))}
             <button
@@ -294,6 +302,9 @@ const Hero = ({ lang }: { lang: Language }) => {
 const MenuSection = ({ lang }: { lang: Language }) => {
   const isCs = lang === "cs";
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [onlySpicy, setOnlySpicy] = useState(false);
+  const [onlyVeggie, setOnlyVeggie] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showAllMobile, setShowAllMobile] = useState(false);
 
@@ -306,37 +317,132 @@ const MenuSection = ({ lang }: { lang: Language }) => {
 
   useEffect(() => {
     setShowAllMobile(false);
-  }, [activeCategory, lang]);
+  }, [activeCategory, onlySpicy, onlyVeggie, searchQuery, lang]);
 
   const filteredItems = useMemo(() => {
-    if (activeCategory === "all") {
-      // Return popular items or first 12 items for overview
-      return DISHES_LIST;
-    }
-    return DISHES_LIST.filter((dish) => dish.category === activeCategory);
-  }, [activeCategory]);
+    return DISHES_LIST.filter((dish) => {
+      // Category filter
+      if (activeCategory !== "all" && dish.category !== activeCategory) {
+        return false;
+      }
+      // Dietary filters
+      if (onlySpicy && !dish.spicy) return false;
+      if (onlyVeggie && !dish.vegetarian) return false;
 
-  const visibleItems = isMobile && !showAllMobile ? filteredItems.slice(0, 6) : filteredItems;
+      // Search query
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase().trim();
+        const matchName =
+          (dish.nameCs && dish.nameCs.toLowerCase().includes(q)) ||
+          (dish.nameEn && dish.nameEn.toLowerCase().includes(q));
+        const matchDesc =
+          (dish.descriptionCs && dish.descriptionCs.toLowerCase().includes(q)) ||
+          (dish.descriptionEn && dish.descriptionEn.toLowerCase().includes(q));
+        const matchCode = dish.code && dish.code.toLowerCase().includes(q);
+        return matchName || matchDesc || matchCode;
+      }
+
+      return true;
+    });
+  }, [activeCategory, onlySpicy, onlyVeggie, searchQuery]);
+
+  const visibleItems = isMobile && !showAllMobile ? filteredItems.slice(0, 9) : filteredItems;
+  const hasActiveFilters = activeCategory !== "all" || onlySpicy || onlyVeggie || searchQuery.trim().length > 0;
+
+  const handleClearFilters = () => {
+    setActiveCategory("all");
+    setOnlySpicy(false);
+    setOnlyVeggie(false);
+    setSearchQuery("");
+  };
 
   return (
-    <section id="menu" className="py-32 px-6 bg-nubi-black">
+    <section id="menu" className="py-24 md:py-32 px-6 bg-nubi-black">
       <div className="max-w-7xl mx-auto">
-        <div className="border-l-4 border-nubi-yellow pl-8 mb-16">
-          <span className="text-nubi-yellow uppercase tracking-[0.4em] text-[10px] mb-4 block font-black">
-            {isCs ? "Autentická asijská kuchyně" : "Authentic Asian Cuisine"}
-          </span>
+        {/* Section Header */}
+        <div className="border-l-4 border-nubi-yellow pl-8 mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nubi-yellow/15 text-nubi-yellow text-[11px] font-black uppercase tracking-widest mb-3">
+            <ShoppingBag size={13} />
+            <span>{isCs ? "Jídelní lístek & Rozvoz" : "Menu & Ordering"}</span>
+          </div>
           <h2 className="text-5xl md:text-8xl font-display font-black uppercase tracking-tighter text-nubi-white">
             {isCs ? "JÍDELNÍ LÍSTEK" : "MENU"}
           </h2>
-          <p className="text-xs text-nubi-white/60 mt-3 font-medium tracking-wider uppercase">
+          <p className="text-xs md:text-sm text-nubi-white/60 mt-3 font-medium tracking-wider uppercase max-w-2xl">
             {isCs
-              ? "Reálná stálá nabídka Nu Bistro synchronizovaná přímo s rozvozovým systémem"
-              : "Live Nu Bistro menu synchronized directly with the delivery system"}
+              ? "Reálná stálá nabídka Nu Bistro synchronizovaná přímo s rozvozovým systémem iKelp"
+              : "Live Nu Bistro menu synchronized directly with the iKelp delivery system"}
           </p>
         </div>
 
-        {/* Category Pills */}
-        <div className="flex flex-wrap gap-2.5 mb-14">
+        {/* Search & Dietary Filters Bar */}
+        <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between mb-8">
+          {/* Search Input */}
+          <div className="relative flex-1 max-w-md">
+            <Search
+              size={18}
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-nubi-white/40 pointer-events-none"
+            />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={
+                isCs
+                  ? "Hledat jídlo, číslo (#01, #58) nebo surovinu..."
+                  : "Search dishes by name, code (#01, #58) or ingredient..."
+              }
+              className="w-full bg-[#111113] border border-nubi-white/10 focus:border-nubi-yellow rounded-xl py-3 pl-11 pr-10 text-xs font-medium placeholder:text-nubi-white/30 text-nubi-white outline-none transition-colors"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-nubi-white/40 hover:text-nubi-white px-2 py-1"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+
+          {/* Selectable Dietary Filters */}
+          <div className="flex items-center gap-2.5 overflow-x-auto pb-1 sm:pb-0">
+            <button
+              onClick={() => setOnlySpicy(!onlySpicy)}
+              className={`px-4 py-2.5 rounded-full text-xs font-black uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer border ${
+                onlySpicy
+                  ? "bg-red-600/30 text-red-400 border-red-500 shadow-md shadow-red-900/20"
+                  : "bg-[#111113] text-nubi-white/60 border-nubi-white/10 hover:border-nubi-white/30 hover:text-nubi-white"
+              }`}
+            >
+              <Flame size={14} className={onlySpicy ? "text-red-400" : "text-nubi-white/40"} />
+              <span>{isCs ? "Pálivé" : "Spicy"}</span>
+            </button>
+
+            <button
+              onClick={() => setOnlyVeggie(!onlyVeggie)}
+              className={`px-4 py-2.5 rounded-full text-xs font-black uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer border ${
+                onlyVeggie
+                  ? "bg-emerald-600/30 text-emerald-400 border-emerald-500 shadow-md shadow-emerald-900/20"
+                  : "bg-[#111113] text-nubi-white/60 border-nubi-white/10 hover:border-nubi-white/30 hover:text-nubi-white"
+              }`}
+            >
+              <Leaf size={14} className={onlyVeggie ? "text-emerald-400" : "text-nubi-white/40"} />
+              <span>{isCs ? "Bez masa" : "Bez masa"}</span>
+            </button>
+
+            {hasActiveFilters && (
+              <button
+                onClick={handleClearFilters}
+                className="px-3 py-2.5 rounded-full text-xs font-bold text-nubi-white/40 hover:text-nubi-yellow transition-colors underline cursor-pointer whitespace-nowrap"
+              >
+                {isCs ? "Reset filtrů" : "Reset filters"}
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Category Filter Pills */}
+        <div className="flex flex-wrap gap-2 mb-10">
           {MENU_CATEGORIES.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (
@@ -355,10 +461,42 @@ const MenuSection = ({ lang }: { lang: Language }) => {
           })}
         </div>
 
+        {/* Results Counter / Category Title */}
+        <div className="flex items-center justify-between mb-6 pb-2 border-b border-nubi-white/5">
+          <span className="text-xs text-nubi-white/40 font-bold uppercase tracking-widest">
+            {isCs
+              ? `Zobrazeno ${filteredItems.length} pokrmů`
+              : `Showing ${filteredItems.length} dishes`}
+          </span>
+          <span className="text-[11px] text-nubi-yellow/80 font-bold uppercase tracking-wider">
+            {isCs ? "Klikněte pro objednání ↗" : "Click to order ↗"}
+          </span>
+        </div>
+
+        {/* Empty State if No Matches */}
+        {filteredItems.length === 0 && (
+          <div className="py-16 text-center bg-[#0F0F0F] rounded-2xl border border-nubi-white/5 p-8">
+            <p className="text-base text-nubi-white/70 font-bold uppercase mb-2">
+              {isCs ? "Nebyly nalezeny žádné pokrmy" : "No dishes found"}
+            </p>
+            <p className="text-xs text-nubi-white/40 mb-6">
+              {isCs
+                ? "Zkuste změnit vyhledávání nebo upravit zvolené filtry."
+                : "Try adjusting your search query or active dietary filters."}
+            </p>
+            <button
+              onClick={handleClearFilters}
+              className="px-6 py-2.5 bg-nubi-yellow text-nubi-black text-xs font-black uppercase tracking-widest rounded-lg hover:bg-nubi-white transition-colors"
+            >
+              {isCs ? "Zobrazit celou nabídku" : "Show full menu"}
+            </button>
+          </div>
+        )}
+
         {/* Dishes Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           <AnimatePresence>
             {visibleItems.map((dish) => {
@@ -394,17 +532,19 @@ const MenuSection = ({ lang }: { lang: Language }) => {
                           </span>
                         )}
                         {dish.spicy && (
-                          <span className="px-2 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/30 text-[9px] font-bold uppercase tracking-wider">
-                            {isCs ? "Pálivé" : "Spicy"}
+                          <span className="px-2 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/30 text-[9px] font-bold uppercase tracking-wider flex items-center gap-1">
+                            <Flame size={10} />
+                            <span>{isCs ? "Pálivé" : "Spicy"}</span>
                           </span>
                         )}
                         {dish.vegetarian && (
-                          <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-bold uppercase tracking-wider">
-                            {isCs ? "Bez masa" : "Veggie"}
+                          <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-bold uppercase tracking-wider flex items-center gap-1">
+                            <Leaf size={10} />
+                            <span>{isCs ? "Bez masa" : "Veggie"}</span>
                           </span>
                         )}
                       </div>
-                      <span className="text-sm font-display font-black text-nubi-yellow">
+                      <span className="text-sm font-display font-black text-nubi-yellow shrink-0">
                         {dish.price} Kč
                       </span>
                     </div>
@@ -421,7 +561,7 @@ const MenuSection = ({ lang }: { lang: Language }) => {
 
                   <div className="mt-6 pt-3 border-t border-nubi-white/5 flex items-center justify-between opacity-80 group-hover:opacity-100 transition-opacity">
                     <span className="text-[10px] text-nubi-yellow font-black uppercase tracking-widest flex items-center gap-1.5">
-                      <span>{isCs ? "Objednat" : "Order"}</span>
+                      <span>{isCs ? "Objednat na iKelp" : "Order on iKelp"}</span>
                       <ExternalLink size={12} />
                     </span>
                     <ChevronRight size={16} className="text-nubi-yellow transform group-hover:translate-x-1 transition-transform" />
@@ -432,29 +572,31 @@ const MenuSection = ({ lang }: { lang: Language }) => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Load more or explore full catalog button */}
+        {/* Load more or open online ordering button */}
         <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
-          {isMobile && !showAllMobile && filteredItems.length > 6 && (
+          {isMobile && !showAllMobile && filteredItems.length > 9 && (
             <button
               onClick={() => setShowAllMobile(true)}
-              className="w-full sm:w-auto border-2 border-nubi-yellow text-nubi-yellow px-8 py-3 font-black uppercase text-xs tracking-widest hover:bg-nubi-yellow hover:text-nubi-black transition-all cursor-pointer"
+              className="w-full sm:w-auto border-2 border-nubi-yellow text-nubi-yellow px-8 py-3.5 font-black uppercase text-xs tracking-widest hover:bg-nubi-yellow hover:text-nubi-black transition-all cursor-pointer"
             >
-              {isCs ? "Zobrazit další" : "Load More"}
+              {isCs ? "Zobrazit další pokrmy" : "Load More Dishes"}
             </button>
           )}
           <a
-            href="#rozvoz"
-            className="w-full sm:w-auto bg-nubi-yellow text-nubi-black px-8 py-3 font-black uppercase text-xs tracking-widest hover:bg-nubi-white transition-all text-center flex items-center justify-center gap-2"
+            href={IKELP_ORDER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto bg-nubi-yellow text-nubi-black px-8 py-3.5 font-black uppercase text-xs tracking-widest hover:bg-nubi-white transition-all text-center flex items-center justify-center gap-2 shadow-xl shadow-nubi-yellow/10"
           >
-            <span>{isCs ? "Kompletní rozvozový lístek s vyhledáváním" : "Full Delivery Menu with Search"}</span>
-            <ChevronRight size={14} />
+            <ShoppingBag size={15} />
+            <span>{isCs ? "Přejít k online objednávce na iKelp.cz" : "Go to Online Ordering on iKelp"}</span>
+            <ExternalLink size={14} />
           </a>
         </div>
       </div>
     </section>
   );
 };
-
 
 const ExperienceSection = ({ lang }: { lang: Language }) => {
   const t = translations[lang].experience;
@@ -505,45 +647,6 @@ const ExperienceSection = ({ lang }: { lang: Language }) => {
             ))}
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
-
-const IKelpDeliverySection = ({
-  lang,
-  onNavigateToRezervace,
-}: {
-  lang: Language;
-  onNavigateToRezervace: () => void;
-}) => {
-  const isCs = lang === "cs";
-
-  return (
-    <section
-      id="rozvoz"
-      className="py-24 md:py-32 bg-nubi-black w-full border-t border-nubi-white/5"
-    >
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-6">
-        <div className="border-l-4 border-nubi-yellow pl-8 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-nubi-yellow/15 text-nubi-yellow text-xs font-black uppercase tracking-widest mb-3">
-            <ShoppingBag size={14} />
-            <span>{isCs ? "Rozvoz & Takeaway" : "Delivery & Takeaway"}</span>
-          </div>
-
-          <h2 className="text-4xl md:text-7xl font-display font-black uppercase tracking-tight text-nubi-white">
-            {isCs ? "Jídelní lístek & Objednávka" : "Menu & Ordering"}
-          </h2>
-
-          <p className="text-xs md:text-sm text-nubi-white/60 mt-3 max-w-2xl font-medium uppercase tracking-widest">
-            {isCs
-              ? "Vyberte si ze stálé nabídky. Kliknutím na jakýkoliv pokrm přejdete do košíku."
-              : "Choose from our regular menu. Click on any item to open direct checkout."}
-          </p>
-        </div>
-
-        {/* Native Menu Component */}
-        <NativeMenu lang={lang} />
       </div>
     </section>
   );
@@ -625,7 +728,7 @@ const ContactSection = ({
           {/* iKelp Delivery Status Button Widget - Redirects to IKELP_ORDER_URL */}
           <div className="pt-2 w-full max-w-sm">
             <div
-              className="relative w-full min-h-[60px] flex items-stretch cursor-pointer group rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-95 bg-[#121214] border border-nubi-yellow/30 hover:border-nubi-yellow p-3"
+              className="relative w-full min-h-[60px] flex items-stretch cursor-pointer group"
               onClick={handleFooterOrderClick}
               role="button"
               tabIndex={0}
@@ -808,10 +911,6 @@ export default function App() {
       <Hero lang={lang} />
       <MenuSection lang={lang} />
       <ExperienceSection lang={lang} />
-      <IKelpDeliverySection
-        lang={lang}
-        onNavigateToRezervace={() => navigateTo("/rezervace")}
-      />
       <ContactSection
         lang={lang}
         onNavigateToRezervace={() => navigateTo("/rezervace")}
