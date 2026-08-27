@@ -1,6 +1,7 @@
 import React from "react";
-import { ArrowLeft, MapPin, Phone, ExternalLink, ShieldCheck } from "lucide-react";
+import { ArrowLeft, MapPin, Phone, ExternalLink } from "lucide-react";
 import { Logo } from "./Logo";
+import { CookieNotice } from "./CookieNotice";
 import { Language, translations } from "../translations";
 
 interface RezervacePageProps {
@@ -105,6 +106,9 @@ export const RezervacePage: React.FC<RezervacePageProps> = ({
           </div>
         </div>
 
+        {/* Mobile / Cookie Notice */}
+        <CookieNotice lang={lang} />
+
         {/* Embedded iKelp Frame */}
         <div className="flex-1 w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-white/10 min-h-[750px] md:min-h-[850px] relative">
           <iframe
@@ -112,7 +116,7 @@ export const RezervacePage: React.FC<RezervacePageProps> = ({
             id="pm-menu-jidelni-listek-rezervace"
             title="Rezervace & Rozvoz"
             className="w-full h-full min-h-[750px] md:min-h-[850px] border-0 block"
-            allow="geolocation; payment"
+            allow="geolocation; payment; storage-access; cross-origin-isolated"
           />
         </div>
       </main>

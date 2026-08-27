@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { Logo } from "./components/Logo";
 import { RezervacePage } from "./components/RezervacePage";
+import { CookieNotice } from "./components/CookieNotice";
 import { translations, Language } from "./translations";
 
 // --- Types ---
@@ -520,12 +521,10 @@ const IKelpDeliverySection = ({
           </a>
         </div>
 
-        {/* Note if cookies blocked by iOS Safari */}
-        <p className="text-[11px] font-medium text-nubi-black/60 mb-4 max-w-lg mx-auto">
-          {isCs
-            ? "💡 Pokud se vám na mobilu zobrazuje hlášení o cookies, klikněte na tlačítko výše pro okamžité otevření."
-            : "💡 If you see a cookie notification on mobile, click the button above to open the full order page."}
-        </p>
+        {/* Helper Notice for mobile / Brave / Safari */}
+        <div className="text-left w-full">
+          <CookieNotice lang={lang} />
+        </div>
 
         <div className="w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-black/15">
           <iframe
@@ -533,7 +532,7 @@ const IKelpDeliverySection = ({
             id="pm-menu-jidelni-listek"
             title="Jídelní lístek & Objednávka"
             className="w-full min-h-[850px] md:min-h-[1000px] border-0 block"
-            allow="geolocation; payment"
+            allow="geolocation; payment; storage-access; cross-origin-isolated"
           />
         </div>
       </div>
