@@ -30,8 +30,6 @@ import {
 } from "lucide-react";
 import { Logo } from "./components/Logo";
 import { RezervacePage } from "./components/RezervacePage";
-import { CookieNotice } from "./components/CookieNotice";
-import { CookieConsentModal } from "./components/CookieConsentModal";
 import { translations, Language } from "./translations";
 
 // --- Types ---
@@ -503,7 +501,7 @@ const IKelpDeliverySection = ({
 
         <div className="w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-black/15">
           <iframe
-            src="https://czxoxjz.ikelp.com/rozvoz"
+            src="/rozvoz"
             id="pm-menu-jidelni-listek"
             title="Jídelní lístek & Objednávka"
             className="w-full min-h-[850px] md:min-h-[1000px] border-0 block"
@@ -736,21 +734,17 @@ export default function App() {
 
   if (currentRoute === "/rezervace") {
     return (
-      <>
-        <CookieConsentModal lang={lang} />
-        <RezervacePage
-          lang={lang}
-          setLang={setLang}
-          onNavigateHome={() => navigateTo("/")}
-        />
-      </>
+      <RezervacePage
+        lang={lang}
+        setLang={setLang}
+        onNavigateHome={() => navigateTo("/")}
+      />
     );
   }
 
   return (
     <div className="bg-nubi-black text-nubi-white font-sans selection:bg-nubi-yellow selection:text-nubi-black">
       {loading && <Loader onComplete={() => setLoading(false)} />}
-      <CookieConsentModal lang={lang} />
       <Navbar
         lang={lang}
         setLang={setLang}
