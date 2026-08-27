@@ -37,32 +37,27 @@ export const CookieConsentModal: React.FC<CookieConsentModalProps> = ({
     setIsOpen(false);
   };
 
-  const handleEnableAndAccept = async () => {
+  const handleEnableAndAccept = () => {
     localStorage.setItem("nubi_cookies_consented", "true");
     sessionStorage.setItem("nubi_cookie_modal_dismissed", "true");
     setIsOpen(false);
 
-    // Try modern Storage Access API for Safari/Chrome iframe permission
+    // Briefly open a clean temporary popup window to ikelp.com or reload the page so the browser registers first-party interaction
     try {
-      if (typeof document !== "undefined" && "requestStorageAccess" in document) {
-        await (document as any).requestStorageAccess();
+      const popup = window.open(directUrl, "ikelp_auth", "width=600,height=700,status=no,resizable=yes");
+      if (popup) {
+        // If popup opened, wait a short moment and reload the current page to pick up storage
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
+        return;
       }
     } catch {
-      // Browser may ignore or already handle
+      // Fallback
     }
 
-    // Refresh iframes to reload with consented storage access
-    try {
-      const iframes = document.querySelectorAll("iframe");
-      iframes.forEach((frame) => {
-        if (frame.src && frame.src.includes("ikelp.com")) {
-          const currentSrc = frame.src;
-          frame.src = currentSrc;
-        }
-      });
-    } catch {
-      // Ignore
-    }
+    // Direct page reload
+    window.location.reload();
   };
 
   const handleOrderDirect1Click = () => {
