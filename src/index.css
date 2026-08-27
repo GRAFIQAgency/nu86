@@ -33,3 +33,20 @@
 .mask-fade-bottom {
   mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
+
+/* iKelp Delivery Status Widget */
+.pm-delivery-pubstat-wr {
+  width: 100%;
+  min-height: 55px;
+  display: block;
+  overflow: visible;
+}
+
+.pm-delivery-pubstat-wr iframe,
+#pm-delivery-public-st {
+  width: 100% !important;
+  min-height: 55px !important;
+  border: none !important;
+  overflow: visible !important;
+  display: block !important;
+}

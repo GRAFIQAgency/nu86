@@ -24,8 +24,12 @@ import {
   Instagram,
   Facebook,
   Twitter,
+  ExternalLink,
+  ShoppingBag,
+  Sparkles,
 } from "lucide-react";
 import { Logo } from "./components/Logo";
+import { RezervacePage } from "./components/RezervacePage";
 import { translations, Language } from "./translations";
 
 // --- Types ---
@@ -114,9 +118,11 @@ const LanguageSwitcher = ({
 const Navbar = ({
   lang,
   setLang,
+  onNavigateToRezervace,
 }: {
   lang: Language;
   setLang: (l: Language) => void;
+  onNavigateToRezervace: () => void;
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -155,12 +161,12 @@ const Navbar = ({
               {link.name}
             </a>
           ))}
-          <a
-            href="#reservations"
-            className="px-8 py-2.5 bg-nubi-yellow text-nubi-black text-xs uppercase tracking-widest font-black hover:bg-nubi-white transition-all duration-300 transform hover:-translate-y-0.5"
+          <button
+            onClick={onNavigateToRezervace}
+            className="px-8 py-2.5 bg-nubi-yellow text-nubi-black text-xs uppercase tracking-widest font-black hover:bg-nubi-white transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
           >
             {t.cta}
-          </a>
+          </button>
           <LanguageSwitcher lang={lang} setLang={setLang} />
         </div>
 
@@ -201,13 +207,15 @@ const Navbar = ({
                 {link.name}
               </a>
             ))}
-            <a
-              href="#reservations"
-              className="mt-auto w-full text-center py-5 bg-nubi-yellow text-nubi-black text-sm uppercase tracking-widest font-black"
-              onClick={() => setIsMobileMenuOpen(false)}
+            <button
+              className="mt-auto w-full text-center py-5 bg-nubi-yellow text-nubi-black text-sm uppercase tracking-widest font-black cursor-pointer"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                onNavigateToRezervace();
+              }}
             >
               {t.cta}
-            </a>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
@@ -461,18 +469,65 @@ const ExperienceSection = ({ lang }: { lang: Language }) => {
   );
 };
 
-const IKelpDeliverySection = () => {
+const IKelpDeliverySection = ({
+  lang,
+  onNavigateToRezervace,
+}: {
+  lang: Language;
+  onNavigateToRezervace: () => void;
+}) => {
+  const isCs = lang === "cs";
+
   return (
     <section
       id="rozvoz"
-      className="py-24 bg-nubi-yellow w-full flex flex-col items-center justify-center min-h-[600px]"
+      className="py-20 md:py-24 bg-nubi-yellow w-full flex flex-col items-center justify-center min-h-[600px]"
     >
       <div className="w-full max-w-6xl mx-auto px-4 md:px-6 text-center text-nubi-black">
-        <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nubi-black/10 text-nubi-black text-xs font-black uppercase tracking-widest mb-4">
+          <ShoppingBag size={14} />
+          <span>{isCs ? "Online Objednávka & Rozvoz" : "Online Ordering & Delivery"}</span>
+        </div>
+
+        <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-4 tracking-tight">
           Delivery / Rozvoz
         </h2>
 
-        <div className="w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-black/10">
+        <p className="text-sm md:text-base font-semibold text-nubi-black/75 max-w-2xl mx-auto mb-8">
+          {isCs
+            ? "Objednejte si z naší nabídky online s doručením přímo k vám nebo osobním odběrem."
+            : "Order from our menu online for direct delivery or personal takeout pickup."}
+        </p>
+
+        {/* Action bar for mobile / cookie warning bypass */}
+        <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
+          <button
+            onClick={onNavigateToRezervace}
+            className="px-6 py-3 rounded-full bg-nubi-black text-nubi-white hover:bg-nubi-white hover:text-nubi-black text-xs font-black uppercase tracking-widest transition-all duration-300 shadow-lg flex items-center gap-2 cursor-pointer transform hover:-translate-y-0.5"
+          >
+            <Sparkles size={14} className="text-nubi-yellow" />
+            <span>{isCs ? "Otevřít celou stránku /rezervace" : "Open full /rezervace page"}</span>
+          </button>
+
+          <a
+            href="https://czxoxjz.ikelp.com/rozvoz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded-full bg-nubi-white text-nubi-black hover:bg-nubi-black hover:text-nubi-white text-xs font-black uppercase tracking-widest transition-all duration-300 shadow-lg flex items-center gap-2 transform hover:-translate-y-0.5"
+          >
+            <span>{isCs ? "Otevřít přímo v iKelp" : "Open directly in iKelp"}</span>
+            <ExternalLink size={14} />
+          </a>
+        </div>
+
+        {/* Note if cookies blocked by iOS Safari */}
+        <p className="text-[11px] font-medium text-nubi-black/60 mb-4 max-w-lg mx-auto">
+          {isCs
+            ? "💡 Pokud se vám na mobilu zobrazuje hlášení o cookies, klikněte na tlačítko výše pro okamžité otevření."
+            : "💡 If you see a cookie notification on mobile, click the button above to open the full order page."}
+        </p>
+
+        <div className="w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-black/15">
           <iframe
             src="https://czxoxjz.ikelp.com/rozvoz"
             id="pm-menu-jidelni-listek"
@@ -496,7 +551,13 @@ declare global {
   }
 }
 
-const ContactSection = ({ lang }: { lang: Language }) => {
+const ContactSection = ({
+  lang,
+  onNavigateToRezervace,
+}: {
+  lang: Language;
+  onNavigateToRezervace: () => void;
+}) => {
   const t = translations[lang].footer;
 
   useEffect(() => {
@@ -548,11 +609,27 @@ const ContactSection = ({ lang }: { lang: Language }) => {
           </p>
 
           {/* iKelp Delivery Status Button Widget */}
-          <div className="pt-2">
+          <div className="pt-2 w-full max-w-sm">
             <div
-              id="pm-delivery-pubstat"
-              className="pm-delivery-pubstat-wr inline-flex items-center"
-            />
+              className="relative w-full min-h-[60px] flex items-stretch cursor-pointer group rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-95"
+              onClick={onNavigateToRezervace}
+              role="button"
+              tabIndex={0}
+              aria-label="Rezervace & Rozvoz"
+              title="Rezervace & Rozvoz"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onNavigateToRezervace();
+                }
+              }}
+            >
+              <div
+                id="pm-delivery-pubstat"
+                className="pm-delivery-pubstat-wr w-full min-h-[60px] overflow-visible"
+              />
+              <div className="absolute inset-0 z-20 cursor-pointer" />
+            </div>
           </div>
 
           <div className="flex gap-6">
@@ -621,6 +698,58 @@ export default function App() {
   const [lang, setLang] = useState<Language>("cs");
   const [loading, setLoading] = useState(true);
 
+  const getInitialRoute = () => {
+    if (typeof window !== "undefined") {
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      if (
+        path === "/rezervace" ||
+        path.startsWith("/rezervace") ||
+        hash === "#rezervace" ||
+        hash === "#reservations"
+      ) {
+        return "/rezervace";
+      }
+    }
+    return "/";
+  };
+
+  const [currentRoute, setCurrentRoute] = useState<string>(getInitialRoute);
+
+  useEffect(() => {
+    const handleNavigationCheck = () => {
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      if (
+        path === "/rezervace" ||
+        path.startsWith("/rezervace") ||
+        hash === "#rezervace" ||
+        hash === "#reservations"
+      ) {
+        setCurrentRoute("/rezervace");
+      } else {
+        setCurrentRoute("/");
+      }
+    };
+
+    window.addEventListener("popstate", handleNavigationCheck);
+    window.addEventListener("hashchange", handleNavigationCheck);
+    return () => {
+      window.removeEventListener("popstate", handleNavigationCheck);
+      window.removeEventListener("hashchange", handleNavigationCheck);
+    };
+  }, []);
+
+  const navigateTo = (route: string) => {
+    setCurrentRoute(route);
+    if (typeof window !== "undefined") {
+      if (window.location.pathname !== route) {
+        window.history.pushState(null, "", route);
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     if (loading) {
       document.body.style.overflow = "hidden";
@@ -629,15 +758,35 @@ export default function App() {
     }
   }, [loading]);
 
+  if (currentRoute === "/rezervace") {
+    return (
+      <RezervacePage
+        lang={lang}
+        setLang={setLang}
+        onNavigateHome={() => navigateTo("/")}
+      />
+    );
+  }
+
   return (
     <div className="bg-nubi-black text-nubi-white font-sans selection:bg-nubi-yellow selection:text-nubi-black">
       {loading && <Loader onComplete={() => setLoading(false)} />}
-      <Navbar lang={lang} setLang={setLang} />
+      <Navbar
+        lang={lang}
+        setLang={setLang}
+        onNavigateToRezervace={() => navigateTo("/rezervace")}
+      />
       <Hero lang={lang} />
       <MenuSection lang={lang} />
       <ExperienceSection lang={lang} />
-      <IKelpDeliverySection />
-      <ContactSection lang={lang} />
+      <IKelpDeliverySection
+        lang={lang}
+        onNavigateToRezervace={() => navigateTo("/rezervace")}
+      />
+      <ContactSection
+        lang={lang}
+        onNavigateToRezervace={() => navigateTo("/rezervace")}
+      />
     </div>
   );
 }
