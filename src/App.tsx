@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { gsap } from "gsap";
 // @ts-ignore
@@ -30,7 +30,10 @@ import {
 } from "lucide-react";
 import { Logo } from "./components/Logo";
 import { RezervacePage } from "./components/RezervacePage";
+import { NativeMenu } from "./components/NativeMenu";
 import { translations, Language } from "./translations";
+import { IKELP_ORDER_URL } from "./config";
+import { MENU_CATEGORIES, DISHES_LIST, DishItem } from "./data/menuData";
 
 // --- Types ---
 interface MenuItem {
@@ -289,15 +292,8 @@ const Hero = ({ lang }: { lang: Language }) => {
 };
 
 const MenuSection = ({ lang }: { lang: Language }) => {
-  const t = translations[lang].menu;
-  const cats = [
-    t.categories.all,
-    t.categories.small,
-    t.categories.main,
-    t.categories.desserts,
-    t.categories.drinks,
-  ];
-  const [activeCategory, setActiveCategory] = useState(t.categories.all);
+  const isCs = lang === "cs";
+  const [activeCategory, setActiveCategory] = useState<string>("all");
   const [isMobile, setIsMobile] = useState(false);
   const [showAllMobile, setShowAllMobile] = useState(false);
 
@@ -308,112 +304,157 @@ const MenuSection = ({ lang }: { lang: Language }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Sync active category on language change if it matches a category translation
   useEffect(() => {
-    setActiveCategory(t.categories.all);
     setShowAllMobile(false);
-  }, [lang, t.categories.all]);
+  }, [activeCategory, lang]);
 
-  useEffect(() => {
-    setShowAllMobile(false);
+  const filteredItems = useMemo(() => {
+    if (activeCategory === "all") {
+      // Return popular items or first 12 items for overview
+      return DISHES_LIST;
+    }
+    return DISHES_LIST.filter((dish) => dish.category === activeCategory);
   }, [activeCategory]);
 
-  const items: MenuItem[] = t.items.map((item) => ({
-    ...item,
-  }));
-
-  const filteredItems =
-    activeCategory === t.categories.all
-      ? items
-      : items.filter((item) => item.category === activeCategory);
-
-  const visibleItems = isMobile && !showAllMobile ? filteredItems.slice(0, 3) : filteredItems;
+  const visibleItems = isMobile && !showAllMobile ? filteredItems.slice(0, 6) : filteredItems;
 
   return (
     <section id="menu" className="py-32 px-6 bg-nubi-black">
       <div className="max-w-7xl mx-auto">
-        <div className="border-l-4 border-nubi-yellow pl-8 mb-20">
+        <div className="border-l-4 border-nubi-yellow pl-8 mb-16">
           <span className="text-nubi-yellow uppercase tracking-[0.4em] text-[10px] mb-4 block font-black">
-            {t.badge}
+            {isCs ? "Autentická asijská kuchyně" : "Authentic Asian Cuisine"}
           </span>
-          <h2 className="text-5xl md:text-8xl font-display font-black uppercase tracking-tighter">
-            {t.title}
+          <h2 className="text-5xl md:text-8xl font-display font-black uppercase tracking-tighter text-nubi-white">
+            {isCs ? "JÍDELNÍ LÍSTEK" : "MENU"}
           </h2>
+          <p className="text-xs text-nubi-white/60 mt-3 font-medium tracking-wider uppercase">
+            {isCs
+              ? "Reálná stálá nabídka Nu Bistro synchronizovaná přímo s rozvozovým systémem"
+              : "Live Nu Bistro menu synchronized directly with the delivery system"}
+          </p>
         </div>
 
-        <div className="flex flex-wrap gap-4 mb-20">
-          {cats.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 text-[10px] uppercase tracking-widest font-black transition-all border ${
-                activeCategory === cat
-                  ? "bg-nubi-yellow border-nubi-yellow text-nubi-black"
-                  : "border-nubi-white/10 text-nubi-white/40 hover:border-nubi-yellow hover:text-nubi-white"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        {/* Category Pills */}
+        <div className="flex flex-wrap gap-2.5 mb-14">
+          {MENU_CATEGORIES.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition-all cursor-pointer border ${
+                  isActive
+                    ? "bg-nubi-yellow border-nubi-yellow text-nubi-black shadow-lg shadow-nubi-yellow/10"
+                    : "border-nubi-white/10 bg-[#111113] text-nubi-white/60 hover:border-nubi-yellow/50 hover:text-nubi-white"
+                }`}
+              >
+                {isCs ? cat.nameCs : cat.nameEn}
+              </button>
+            );
+          })}
         </div>
 
+        {/* Dishes Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           <AnimatePresence>
-            {visibleItems.map((item) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                onClick={() => document.getElementById("rozvoz")?.scrollIntoView({ behavior: "smooth" })}
-                className="group relative bg-[#0F0F0F] p-6 border border-nubi-white/5 hover:border-nubi-yellow/50 [@media(hover:none)]:border-nubi-yellow/50 transition-all duration-300 cursor-pointer"
-              >
-                <div className="relative overflow-hidden mb-6 aspect-video grayscale group-hover:grayscale-0 [@media(hover:none)]:grayscale-0 transition-all duration-500">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <h3 className="text-xl font-black uppercase mb-3 tracking-tight group-hover:text-nubi-yellow [@media(hover:none)]:text-nubi-yellow transition-colors">
-                  {item.name}
-                </h3>
-                <p className="text-nubi-white/50 text-xs leading-relaxed font-medium">
-                  {item.description}
-                </p>
-                <div className="mt-6 flex items-center justify-between opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-100 transition-opacity">
-                  <span className="text-[10px] text-nubi-yellow font-black uppercase tracking-widest">
-                    {t.order}
-                  </span>
-                  <ChevronRight size={16} className="text-nubi-yellow" />
-                </div>
-              </motion.div>
-            ))}
+            {visibleItems.map((dish) => {
+              const name = isCs ? dish.nameCs : dish.nameEn;
+              const desc = isCs ? dish.descriptionCs : dish.descriptionEn;
+
+              return (
+                <motion.div
+                  key={dish.id}
+                  layout
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      window.open(IKELP_ORDER_URL, "_blank", "noopener,noreferrer");
+                    }
+                  }}
+                  className="group relative bg-[#0F0F0F] hover:bg-[#141416] p-6 border border-nubi-white/8 hover:border-nubi-yellow/60 rounded-xl transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        {dish.code && (
+                          <span className="px-2 py-0.5 rounded bg-nubi-yellow text-nubi-black text-[10px] font-black uppercase tracking-wider">
+                            #{dish.code}
+                          </span>
+                        )}
+                        {dish.popular && (
+                          <span className="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[9px] font-bold uppercase tracking-wider">
+                            {isCs ? "Oblíbené" : "Popular"}
+                          </span>
+                        )}
+                        {dish.spicy && (
+                          <span className="px-2 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/30 text-[9px] font-bold uppercase tracking-wider">
+                            {isCs ? "Pálivé" : "Spicy"}
+                          </span>
+                        )}
+                        {dish.vegetarian && (
+                          <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-bold uppercase tracking-wider">
+                            {isCs ? "Bez masa" : "Veggie"}
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-sm font-display font-black text-nubi-yellow">
+                        {dish.price} Kč
+                      </span>
+                    </div>
+
+                    <h3 className="text-base font-bold uppercase tracking-tight text-nubi-white group-hover:text-nubi-yellow transition-colors mb-2">
+                      {name}
+                    </h3>
+                    {desc && (
+                      <p className="text-nubi-white/50 text-xs leading-relaxed font-normal line-clamp-3">
+                        {desc}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="mt-6 pt-3 border-t border-nubi-white/5 flex items-center justify-between opacity-80 group-hover:opacity-100 transition-opacity">
+                    <span className="text-[10px] text-nubi-yellow font-black uppercase tracking-widest flex items-center gap-1.5">
+                      <span>{isCs ? "Objednat" : "Order"}</span>
+                      <ExternalLink size={12} />
+                    </span>
+                    <ChevronRight size={16} className="text-nubi-yellow transform group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </motion.div>
 
-        {isMobile && !showAllMobile && filteredItems.length > 3 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mt-16 flex justify-center"
-          >
+        {/* Load more or explore full catalog button */}
+        <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
+          {isMobile && !showAllMobile && filteredItems.length > 6 && (
             <button
               onClick={() => setShowAllMobile(true)}
-              className="border-2 border-nubi-yellow text-nubi-yellow px-10 py-3.5 font-black uppercase text-xs tracking-widest hover:bg-nubi-yellow hover:text-nubi-black transition-all"
+              className="w-full sm:w-auto border-2 border-nubi-yellow text-nubi-yellow px-8 py-3 font-black uppercase text-xs tracking-widest hover:bg-nubi-yellow hover:text-nubi-black transition-all cursor-pointer"
             >
-              {lang === "cs" ? "Načíst další" : "Load More"}
+              {isCs ? "Zobrazit další" : "Load More"}
             </button>
-          </motion.div>
-        )}
+          )}
+          <a
+            href="#rozvoz"
+            className="w-full sm:w-auto bg-nubi-yellow text-nubi-black px-8 py-3 font-black uppercase text-xs tracking-widest hover:bg-nubi-white transition-all text-center flex items-center justify-center gap-2"
+          >
+            <span>{isCs ? "Kompletní rozvozový lístek s vyhledáváním" : "Full Delivery Menu with Search"}</span>
+            <ChevronRight size={14} />
+          </a>
+        </div>
       </div>
     </section>
   );
 };
+
 
 const ExperienceSection = ({ lang }: { lang: Language }) => {
   const t = translations[lang].experience;
@@ -481,33 +522,28 @@ const IKelpDeliverySection = ({
   return (
     <section
       id="rozvoz"
-      className="py-20 md:py-24 bg-nubi-yellow w-full flex flex-col items-center justify-center min-h-[600px]"
+      className="py-24 md:py-32 bg-nubi-black w-full border-t border-nubi-white/5"
     >
-      <div className="w-full max-w-6xl mx-auto px-4 md:px-6 text-center text-nubi-black">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nubi-black/10 text-nubi-black text-xs font-black uppercase tracking-widest mb-4">
-          <ShoppingBag size={14} />
-          <span>{isCs ? "Online Objednávka & Rozvoz" : "Online Ordering & Delivery"}</span>
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-6">
+        <div className="border-l-4 border-nubi-yellow pl-8 mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-nubi-yellow/15 text-nubi-yellow text-xs font-black uppercase tracking-widest mb-3">
+            <ShoppingBag size={14} />
+            <span>{isCs ? "Rozvoz & Takeaway" : "Delivery & Takeaway"}</span>
+          </div>
+
+          <h2 className="text-4xl md:text-7xl font-display font-black uppercase tracking-tight text-nubi-white">
+            {isCs ? "Jídelní lístek & Objednávka" : "Menu & Ordering"}
+          </h2>
+
+          <p className="text-xs md:text-sm text-nubi-white/60 mt-3 max-w-2xl font-medium uppercase tracking-widest">
+            {isCs
+              ? "Vyberte si ze stálé nabídky. Kliknutím na jakýkoliv pokrm přejdete do košíku."
+              : "Choose from our regular menu. Click on any item to open direct checkout."}
+          </p>
         </div>
 
-        <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-4 tracking-tight">
-          Delivery / Rozvoz
-        </h2>
-
-        <p className="text-sm md:text-base font-semibold text-nubi-black/75 max-w-2xl mx-auto mb-8">
-          {isCs
-            ? "Objednejte si z naší nabídky online s doručením přímo k vám nebo osobním odběrem."
-            : "Order from our menu online for direct delivery or personal takeout pickup."}
-        </p>
-
-        <div className="w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-black/15">
-          <iframe
-            src="https://czxoxjz.ikelp.com/rozvoz"
-            id="pm-menu-jidelni-listek"
-            title="Jídelní lístek & Objednávka"
-            className="w-full min-h-[850px] md:min-h-[1000px] border-0 block"
-            allow="geolocation; payment; storage-access; cross-origin-isolated"
-          />
-        </div>
+        {/* Native Menu Component */}
+        <NativeMenu lang={lang} />
       </div>
     </section>
   );
@@ -531,6 +567,12 @@ const ContactSection = ({
   onNavigateToRezervace: () => void;
 }) => {
   const t = translations[lang].footer;
+
+  const handleFooterOrderClick = () => {
+    if (typeof window !== "undefined") {
+      window.open(IKELP_ORDER_URL, "_blank", "noopener,noreferrer");
+    }
+  };
 
   useEffect(() => {
     const initPOS = () => {
@@ -580,26 +622,39 @@ const ContactSection = ({
             {t.description}
           </p>
 
-          {/* iKelp Delivery Status Button Widget */}
+          {/* iKelp Delivery Status Button Widget - Redirects to IKELP_ORDER_URL */}
           <div className="pt-2 w-full max-w-sm">
             <div
-              className="relative w-full min-h-[60px] flex items-stretch cursor-pointer group rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-95"
-              onClick={onNavigateToRezervace}
+              className="relative w-full min-h-[60px] flex items-stretch cursor-pointer group rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-95 bg-[#121214] border border-nubi-yellow/30 hover:border-nubi-yellow p-3"
+              onClick={handleFooterOrderClick}
               role="button"
               tabIndex={0}
-              aria-label="Rezervace & Rozvoz"
-              title="Rezervace & Rozvoz"
+              aria-label="Objednat rozvoz online"
+              title="Objednat rozvoz online (otevře e-shop)"
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  onNavigateToRezervace();
+                  handleFooterOrderClick();
                 }
               }}
             >
               <div
                 id="pm-delivery-pubstat"
-                className="pm-delivery-pubstat-wr w-full min-h-[60px] overflow-visible"
-              />
+                className="pm-delivery-pubstat-wr w-full min-h-[44px] overflow-visible flex items-center justify-between"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
+                  <div className="text-left">
+                    <span className="block text-xs font-black text-nubi-white uppercase tracking-wider">
+                      {lang === "cs" ? "Objednat rozvoz online" : "Order delivery online"}
+                    </span>
+                    <span className="block text-[10px] text-nubi-yellow font-bold uppercase tracking-widest">
+                      {lang === "cs" ? "iKelp e-shop aktivní ↗" : "iKelp e-shop active ↗"}
+                    </span>
+                  </div>
+                </div>
+                <ExternalLink size={16} className="text-nubi-yellow group-hover:translate-x-0.5 transition-transform" />
+              </div>
               <div className="absolute inset-0 z-20 cursor-pointer" />
             </div>
           </div>

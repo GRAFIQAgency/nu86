@@ -1,8 +1,9 @@
 import React from "react";
-import { ArrowLeft, MapPin, Phone, ExternalLink } from "lucide-react";
+import { ArrowLeft, MapPin, Phone, ExternalLink, ShoppingBag } from "lucide-react";
 import { Logo } from "./Logo";
-import { CookieNotice } from "./CookieNotice";
+import { NativeMenu } from "./NativeMenu";
 import { Language, translations } from "../translations";
+import { IKELP_ORDER_URL } from "../config";
 
 interface RezervacePageProps {
   lang: Language;
@@ -25,7 +26,7 @@ export const RezervacePage: React.FC<RezervacePageProps> = ({
           <div className="flex items-center gap-4 md:gap-8">
             <button
               onClick={onNavigateHome}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-nubi-white/10 bg-nubi-white/5 hover:bg-nubi-yellow hover:text-nubi-black hover:border-nubi-yellow text-xs font-black uppercase tracking-widest transition-all duration-300 group"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-nubi-white/10 bg-nubi-white/5 hover:bg-nubi-yellow hover:text-nubi-black hover:border-nubi-yellow text-xs font-black uppercase tracking-widest transition-all duration-300 group cursor-pointer"
               aria-label={isCs ? "Zpět na hlavní stránku" : "Back to Home"}
             >
               <ArrowLeft
@@ -45,19 +46,20 @@ export const RezervacePage: React.FC<RezervacePageProps> = ({
 
           <div className="flex items-center gap-4">
             <a
-              href="https://czxoxjz.ikelp.com/rozvoz"
+              href={IKELP_ORDER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nubi-yellow text-nubi-black text-xs font-black uppercase tracking-widest hover:bg-nubi-white transition-all duration-300 shadow-md"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-nubi-yellow text-nubi-black text-xs font-black uppercase tracking-widest hover:bg-nubi-white transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
             >
-              <span>{isCs ? "Otevřít v novém okně" : "Open in new window"}</span>
+              <ShoppingBag size={14} />
+              <span>{isCs ? "Otevřít košík / e-shop" : "Open Cart / E-shop"}</span>
               <ExternalLink size={14} />
             </a>
 
             <div className="flex gap-3 items-center border-l border-nubi-white/10 pl-4 h-6">
               <button
                 onClick={() => setLang("cs")}
-                className={`text-xs font-black tracking-widest transition-colors ${
+                className={`text-xs font-black tracking-widest transition-colors cursor-pointer ${
                   lang === "cs"
                     ? "text-nubi-yellow"
                     : "text-nubi-white/40 hover:text-nubi-white"
@@ -67,7 +69,7 @@ export const RezervacePage: React.FC<RezervacePageProps> = ({
               </button>
               <button
                 onClick={() => setLang("en")}
-                className={`text-xs font-black tracking-widest transition-colors ${
+                className={`text-xs font-black tracking-widest transition-colors cursor-pointer ${
                   lang === "en"
                     ? "text-nubi-yellow"
                     : "text-nubi-white/40 hover:text-nubi-white"
@@ -81,47 +83,42 @@ export const RezervacePage: React.FC<RezervacePageProps> = ({
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 py-6 md:py-8 flex flex-col">
-        <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 px-2">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 flex flex-col">
+        <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-nubi-white/10">
           <div>
-            <h1 className="text-3xl md:text-5xl font-display font-black uppercase tracking-tight text-nubi-white">
-              {isCs ? "Rezervace & Rozvoz" : "Reservations & Delivery"}
+            <h1 className="text-3xl md:text-6xl font-display font-black uppercase tracking-tight text-nubi-white">
+              {isCs ? "Jídelní Lístek & Objednávka" : "Menu & Ordering"}
             </h1>
-            <p className="text-xs md:text-sm text-nubi-white/50 mt-1 uppercase tracking-widest font-medium">
+            <p className="text-xs md:text-sm text-nubi-white/60 mt-2 uppercase tracking-widest font-semibold">
               {isCs
                 ? "Vyberte si ze stálé nabídky a objednejte online s doručením nebo vyzvednutím"
-                : "Choose from our menu and order online for delivery or pickup"}
+                : "Choose from our regular menu and order online for delivery or pickup"}
             </p>
           </div>
 
-          <div className="flex items-center gap-6 text-xs text-nubi-white/60">
+          <div className="flex flex-wrap items-center gap-6 text-xs text-nubi-white/70">
             <div className="flex items-center gap-2">
-              <Phone size={14} className="text-nubi-yellow" />
-              <span>+420 731 076 819</span>
+              <Phone size={15} className="text-nubi-yellow" />
+              <a href="tel:+420731076819" className="hover:text-nubi-yellow transition-colors">
+                +420 731 076 819
+              </a>
             </div>
-            <div className="hidden md:flex items-center gap-2">
-              <MapPin size={14} className="text-nubi-yellow" />
+            <div className="hidden sm:flex items-center gap-2">
+              <MapPin size={15} className="text-nubi-yellow" />
               <span>{translations[lang].footer.address}</span>
             </div>
           </div>
         </div>
 
-        {/* Embedded iKelp Frame */}
-        <div className="flex-1 w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-white/10 min-h-[750px] md:min-h-[850px] relative">
-          <iframe
-            src="https://czxoxjz.ikelp.com/rozvoz"
-            id="pm-menu-jidelni-listek-rezervace"
-            title="Rezervace & Rozvoz"
-            className="w-full h-full min-h-[750px] md:min-h-[850px] border-0 block"
-            allow="geolocation; payment; storage-access; cross-origin-isolated"
-          />
-        </div>
+        {/* Native Interactive Menu with Direct Ordering */}
+        <NativeMenu lang={lang} />
       </main>
 
       {/* Clean Footer */}
-      <footer className="py-6 border-t border-nubi-white/5 px-6 text-center text-[10px] uppercase tracking-widest text-nubi-white/30">
+      <footer className="py-8 border-t border-nubi-white/5 px-6 text-center text-xs uppercase tracking-widest text-nubi-white/40">
         <p>© 2026 NU BISTRO — {isCs ? "Všechna práva vyhrazena" : "All rights reserved"}</p>
       </footer>
     </div>
   );
 };
+
