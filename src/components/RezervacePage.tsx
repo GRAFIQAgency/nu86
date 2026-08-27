@@ -106,9 +106,6 @@ export const RezervacePage: React.FC<RezervacePageProps> = ({
           </div>
         </div>
 
-        {/* Mobile / Cookie Notice */}
-        <CookieNotice lang={lang} />
-
         {/* Embedded iKelp Frame */}
         <div className="flex-1 w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-white/10 min-h-[750px] md:min-h-[850px] relative">
           <iframe

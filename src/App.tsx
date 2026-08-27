@@ -501,32 +501,6 @@ const IKelpDeliverySection = ({
             : "Order from our menu online for direct delivery or personal takeout pickup."}
         </p>
 
-        {/* Action bar for mobile / cookie warning bypass */}
-        <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
-          <button
-            onClick={onNavigateToRezervace}
-            className="px-6 py-3 rounded-full bg-nubi-black text-nubi-white hover:bg-nubi-white hover:text-nubi-black text-xs font-black uppercase tracking-widest transition-all duration-300 shadow-lg flex items-center gap-2 cursor-pointer transform hover:-translate-y-0.5"
-          >
-            <Sparkles size={14} className="text-nubi-yellow" />
-            <span>{isCs ? "Otevřít celou stránku /rezervace" : "Open full /rezervace page"}</span>
-          </button>
-
-          <a
-            href="https://czxoxjz.ikelp.com/rozvoz"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-full bg-nubi-white text-nubi-black hover:bg-nubi-black hover:text-nubi-white text-xs font-black uppercase tracking-widest transition-all duration-300 shadow-lg flex items-center gap-2 transform hover:-translate-y-0.5"
-          >
-            <span>{isCs ? "Otevřít přímo v iKelp" : "Open directly in iKelp"}</span>
-            <ExternalLink size={14} />
-          </a>
-        </div>
-
-        {/* Helper Notice for mobile / Brave / Safari */}
-        <div className="text-left w-full">
-          <CookieNotice lang={lang} />
-        </div>
-
         <div className="w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-black/15">
           <iframe
             src="https://czxoxjz.ikelp.com/rozvoz"
@@ -708,7 +682,6 @@ export default function App() {
         hash === "#rezervace" ||
         hash === "#reservations"
       ) {
-        window.location.replace("https://czxoxjz.ikelp.com/rozvoz");
         return "/rezervace";
       }
     }
@@ -727,7 +700,7 @@ export default function App() {
         hash === "#rezervace" ||
         hash === "#reservations"
       ) {
-        window.location.replace("https://czxoxjz.ikelp.com/rozvoz");
+        setCurrentRoute("/rezervace");
       } else {
         setCurrentRoute("/");
       }
@@ -744,10 +717,6 @@ export default function App() {
   }, []);
 
   const navigateTo = (route: string) => {
-    if (route === "/rezervace" || route.startsWith("/rezervace")) {
-      window.location.href = "https://czxoxjz.ikelp.com/rozvoz";
-      return;
-    }
     setCurrentRoute(route);
     if (typeof window !== "undefined") {
       if (window.location.pathname !== route) {

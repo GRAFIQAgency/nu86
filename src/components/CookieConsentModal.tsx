@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   Cookie,
   ExternalLink,
-  ShieldAlert,
   CheckCircle2,
   X,
   Sparkles,
@@ -23,12 +22,12 @@ export const CookieConsentModal: React.FC<CookieConsentModalProps> = ({
   const directUrl = "https://czxoxjz.ikelp.com/rozvoz";
 
   useEffect(() => {
-    // Show after slight delay when user loads the page if not already dismissed in this session
-    const hasSeen = sessionStorage.getItem("nubi_cookie_modal_dismissed");
-    if (!hasSeen) {
+    // Show after slight delay when user loads the page if not already consented
+    const hasConsented = localStorage.getItem("nubi_cookies_consented") || sessionStorage.getItem("nubi_cookie_modal_dismissed");
+    if (!hasConsented) {
       const timer = setTimeout(() => {
         setIsOpen(true);
-      }, 900);
+      }, 700);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -38,7 +37,36 @@ export const CookieConsentModal: React.FC<CookieConsentModalProps> = ({
     setIsOpen(false);
   };
 
+  const handleEnableAndAccept = async () => {
+    localStorage.setItem("nubi_cookies_consented", "true");
+    sessionStorage.setItem("nubi_cookie_modal_dismissed", "true");
+    setIsOpen(false);
+
+    // Try modern Storage Access API for Safari/Chrome iframe permission
+    try {
+      if (typeof document !== "undefined" && "requestStorageAccess" in document) {
+        await (document as any).requestStorageAccess();
+      }
+    } catch {
+      // Browser may ignore or already handle
+    }
+
+    // Refresh iframes to reload with consented storage access
+    try {
+      const iframes = document.querySelectorAll("iframe");
+      iframes.forEach((frame) => {
+        if (frame.src && frame.src.includes("ikelp.com")) {
+          const currentSrc = frame.src;
+          frame.src = currentSrc;
+        }
+      });
+    } catch {
+      // Ignore
+    }
+  };
+
   const handleOrderDirect1Click = () => {
+    localStorage.setItem("nubi_cookies_consented", "true");
     sessionStorage.setItem("nubi_cookie_modal_dismissed", "true");
     setIsOpen(false);
     if (onOpenDirect) {
@@ -79,10 +107,10 @@ export const CookieConsentModal: React.FC<CookieConsentModalProps> = ({
           </div>
           <div>
             <span className="text-[10px] uppercase font-black tracking-widest text-nubi-yellow block mb-0.5">
-              {isCs ? "Objednávka & Rozvoz" : "Online Ordering"}
+              {isCs ? "Online Nabídka & Rozvoz" : "Online Menu & Delivery"}
             </span>
             <h3 className="text-xl sm:text-2xl font-display font-black uppercase text-nubi-white tracking-tight">
-              {isCs ? "Povolení pro online objednávku" : "Enable Online Ordering"}
+              {isCs ? "Povolení cookies pro objednávku" : "Enable Cookies for Ordering"}
             </h3>
           </div>
         </div>
@@ -90,27 +118,27 @@ export const CookieConsentModal: React.FC<CookieConsentModalProps> = ({
         {/* Description */}
         <p className="text-sm text-nubi-white/80 leading-relaxed mb-6">
           {isCs
-            ? "Mobilní zařízení (Safari / Brave) z bezpečnostních důvodů blokují okno s jídelním lístkem. 1 kliknutím níže otevřete objednávkový systém přímo bez jakýchkoliv chyb a bez nutnosti cokoliv složitě nastavovat."
-            : "Mobile browsers (Safari / Brave) block embedded ordering frames. 1-click below opens the ordering system directly with full access, no errors, and zero complicated settings."}
+            ? "Pro bezproblémové načtení jídelního lístku a objednávkového košíku v prohlížeči (včetně Safari a Brave) klikněte na tlačítko níže."
+            : "To seamlessly load the ordering menu and shopping cart in your browser (including Safari and Brave), click the button below."}
         </p>
 
         {/* Primary 1-Click Action Button */}
         <button
           id="btn-cookie-1click-order"
-          onClick={handleOrderDirect1Click}
+          onClick={handleEnableAndAccept}
           className="w-full py-4 px-6 rounded-2xl bg-nubi-yellow text-nubi-black hover:bg-nubi-white font-black text-sm uppercase tracking-wider flex items-center justify-center gap-3 transition-all duration-300 shadow-xl cursor-pointer transform hover:scale-[1.02] active:scale-[0.98] group mb-3"
         >
-          <Sparkles size={18} className="text-nubi-black" />
-          <span>{isCs ? "1 Kliknutím objednat bez chyb" : "1-Click Order Without Errors"}</span>
-          <ExternalLink size={18} className="transition-transform group-hover:translate-x-0.5" />
+          <CheckCircle2 size={19} className="text-nubi-black" />
+          <span>{isCs ? "Povolit cookies a načíst nabídku" : "Enable cookies & load menu"}</span>
         </button>
 
-        {/* Secondary / Close Button */}
+        {/* Secondary Direct Option */}
         <button
-          onClick={handleClose}
-          className="w-full py-2.5 text-center text-xs font-semibold uppercase tracking-widest text-nubi-white/50 hover:text-nubi-white transition-colors cursor-pointer"
+          onClick={handleOrderDirect1Click}
+          className="w-full py-2.5 px-4 rounded-xl bg-nubi-white/5 hover:bg-nubi-white/10 text-nubi-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer mb-2"
         >
-          {isCs ? "Pokračovat na webu" : "Continue browsing website"}
+          <ExternalLink size={14} className="text-nubi-yellow" />
+          <span>{isCs ? "Nebo otevřít přímo v novém okně" : "Or open directly in a new tab"}</span>
         </button>
       </div>
     </div>
