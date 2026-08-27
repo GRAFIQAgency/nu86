@@ -35,49 +35,41 @@ export const CookieNotice: React.FC<CookieNoticeProps> = ({
   };
 
   return (
-    <div className="w-full bg-gradient-to-r from-amber-500/15 via-nubi-yellow/20 to-amber-500/15 border border-nubi-yellow/40 rounded-2xl p-4 md:p-5 mb-6 text-left shadow-xl backdrop-blur-sm relative overflow-hidden">
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div className="flex items-start gap-3.5">
-          <div className="w-10 h-10 rounded-xl bg-nubi-yellow text-nubi-black flex items-center justify-center shrink-0 mt-0.5 shadow-md">
-            <ShieldAlert size={22} className="animate-pulse" />
+    <div className="w-full bg-[#18181B] border-2 border-nubi-yellow rounded-2xl p-5 md:p-6 mb-6 text-left shadow-2xl relative overflow-hidden">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+        <div className="flex items-start gap-4">
+          <div className="w-12 h-12 rounded-xl bg-nubi-yellow text-nubi-black flex items-center justify-center shrink-0 shadow-lg">
+            <Cookie size={24} />
           </div>
           <div>
-            <h4 className="text-sm md:text-base font-bold text-nubi-white flex items-center gap-2">
-              <span>
-                {isCs
-                  ? "Hlášení o cookies na mobilu / v Safari / Brave?"
-                  : "Cookie notice on Mobile / Safari / Brave?"}
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-[11px] uppercase font-black px-2.5 py-0.5 rounded bg-nubi-yellow text-nubi-black">
+                {isCs ? "DŮLEŽITÉ UPOZORNĚNÍ" : "IMPORTANT"}
               </span>
-              <span className="text-[10px] uppercase font-black px-2 py-0.5 rounded bg-nubi-yellow/20 text-nubi-yellow border border-nubi-yellow/30">
-                {isCs ? "Doporučeno" : "Recommended"}
+              <span className="text-xs font-bold text-nubi-yellow">
+                {isCs ? "Mobil / Safari / Brave" : "Mobile / Safari / Brave"}
               </span>
-            </h4>
-            <p className="text-xs md:text-sm text-nubi-white/70 mt-1 leading-relaxed max-w-2xl">
+            </div>
+            <h4 className="text-base md:text-lg font-bold text-nubi-white">
               {isCs
-                ? "Mobilní zařízení (iPhone, Android) a prohlížeče jako Brave či Safari blokují cookies třetích stran ve vložených oknech. Pro bezproblémové objednání klikněte na tlačítko níže."
-                : "Mobile browsers (iOS Safari, Brave) block third-party cookies inside embedded frames. To order without any restrictions, click below to open the dedicated order system."}
+                ? "Máte potíže s načtením nebo hlášením o cookies?"
+                : "Having trouble with menu loading or cookies?"}
+            </h4>
+            <p className="text-xs md:text-sm text-nubi-white/80 mt-1 leading-relaxed max-w-2xl font-medium">
+              {isCs
+                ? "Pokud váš telefon či prohlížeč blokuje cookies uvnitř okna, jedním kliknutím otevřete přímé objednání bez chyb."
+                : "If your browser blocks cookies inside the frame, 1-click opens direct ordering without errors."}
             </p>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto shrink-0 justify-start md:justify-end">
+        <div className="flex flex-wrap items-center gap-3 w-full md:w-auto shrink-0">
           <button
             onClick={handleOpenDirect}
-            className="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-nubi-yellow text-nubi-black hover:bg-nubi-white font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer group"
+            className="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-nubi-yellow text-nubi-black hover:bg-nubi-white font-black text-xs uppercase tracking-wider transition-all duration-300 shadow-xl cursor-pointer transform hover:scale-105"
           >
-            <span>{isCs ? "Objednat bez omezení" : "Order Directly"}</span>
-            <ExternalLink
-              size={15}
-              className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </button>
-
-          <button
-            onClick={() => setShowInstructions(!showInstructions)}
-            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-nubi-white/10 hover:bg-nubi-white/20 text-nubi-white text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer"
-          >
-            <Info size={14} />
-            <span>{isCs ? "Jak povolit cookies" : "How to enable"}</span>
+            <span>{isCs ? "1 Kliknutím objednat přímo" : "1-Click Direct Order"}</span>
+            <ExternalLink size={16} />
           </button>
         </div>
       </div>
