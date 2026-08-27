@@ -501,7 +501,7 @@ const IKelpDeliverySection = ({
 
         <div className="w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-black/15">
           <iframe
-            src="/rozvoz"
+            src="https://czxoxjz.ikelp.com/rozvoz"
             id="pm-menu-jidelni-listek"
             title="Jídelní lístek & Objednávka"
             className="w-full min-h-[850px] md:min-h-[1000px] border-0 block"

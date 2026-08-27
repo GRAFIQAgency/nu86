@@ -109,7 +109,7 @@ export const RezervacePage: React.FC<RezervacePageProps> = ({
         {/* Embedded iKelp Frame */}
         <div className="flex-1 w-full bg-[#09090B] rounded-2xl overflow-hidden shadow-2xl border border-nubi-white/10 min-h-[750px] md:min-h-[850px] relative">
           <iframe
-            src="/rozvoz"
+            src="https://czxoxjz.ikelp.com/rozvoz"
             id="pm-menu-jidelni-listek-rezervace"
             title="Rezervace & Rozvoz"
             className="w-full h-full min-h-[750px] md:min-h-[850px] border-0 block"
