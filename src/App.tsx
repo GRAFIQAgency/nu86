@@ -288,12 +288,14 @@ const Hero = ({
           >
             {t.explore}
           </a>
-          <button
-            onClick={onNavigateToRezervace}
-            className="border-2 border-nubi-yellow text-nubi-yellow px-10 py-3.5 font-black uppercase text-xs tracking-widest hover:bg-nubi-yellow hover:text-nubi-black transition-all cursor-pointer"
+          <a
+            href={IKELP_ORDER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-2 border-nubi-yellow text-nubi-yellow px-10 py-3.5 font-black uppercase text-xs tracking-widest hover:bg-nubi-yellow hover:text-nubi-black transition-all text-center"
           >
             {t.order}
-          </button>
+          </a>
         </motion.div>
       </div>
 
