@@ -234,7 +234,13 @@ const Navbar = ({
   );
 };
 
-const Hero = ({ lang }: { lang: Language }) => {
+const Hero = ({
+  lang,
+  onNavigateToRezervace,
+}: {
+  lang: Language;
+  onNavigateToRezervace?: () => void;
+}) => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const t = translations[lang].hero;
@@ -282,12 +288,12 @@ const Hero = ({ lang }: { lang: Language }) => {
           >
             {t.explore}
           </a>
-          <a
-            href="#rozvoz"
-            className="border-2 border-nubi-yellow text-nubi-yellow px-10 py-3.5 font-black uppercase text-xs tracking-widest hover:bg-nubi-yellow hover:text-nubi-black transition-all"
+          <button
+            onClick={onNavigateToRezervace}
+            className="border-2 border-nubi-yellow text-nubi-yellow px-10 py-3.5 font-black uppercase text-xs tracking-widest hover:bg-nubi-yellow hover:text-nubi-black transition-all cursor-pointer"
           >
             {t.order}
-          </a>
+          </button>
         </motion.div>
       </div>
 
@@ -589,7 +595,7 @@ const MenuSection = ({ lang }: { lang: Language }) => {
             className="w-full sm:w-auto bg-nubi-yellow text-nubi-black px-8 py-3.5 font-black uppercase text-xs tracking-widest hover:bg-nubi-white transition-all text-center flex items-center justify-center gap-2 shadow-xl shadow-nubi-yellow/10"
           >
             <ShoppingBag size={15} />
-            <span>{isCs ? "Přejít k online objednávce na iKelp.cz" : "Go to Online Ordering on iKelp"}</span>
+            <span>{isCs ? "Přejít k online objednávce" : "Go to Online Ordering on iKelp"}</span>
             <ExternalLink size={14} />
           </a>
         </div>
@@ -682,7 +688,7 @@ const ContactSection = ({
       if (typeof window !== "undefined" && window.posmobile?.api) {
         try {
           window.posmobile.api.init({
-            appId: "czxoxjz",
+            appId: "nu86",
             delBtnId: "pm-delivery-pubstat",
           });
         } catch (e) {
@@ -908,7 +914,10 @@ export default function App() {
         setLang={setLang}
         onNavigateToRezervace={() => navigateTo("/rezervace")}
       />
-      <Hero lang={lang} />
+      <Hero
+        lang={lang}
+        onNavigateToRezervace={() => navigateTo("/rezervace")}
+      />
       <MenuSection lang={lang} />
       <ExperienceSection lang={lang} />
       <ContactSection

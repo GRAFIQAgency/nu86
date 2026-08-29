@@ -1,4 +1,4 @@
-// Exact live menu data directly synchronized from iKelp Rozvoz (https://czxoxjz.ikelp.com/rozvoz)
+// Exact live menu data directly synchronized from iKelp Rozvoz (https://nu86.ikelp.com/rozvoz)
 export type DishItem = Dish;
 export type MenuCategory = Category;
 
@@ -49,7 +49,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": true,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-starters-2",
@@ -63,7 +63,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-starters-3",
@@ -76,7 +76,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-starters-4",
@@ -89,7 +89,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-starters-5",
@@ -102,7 +102,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-starters-6",
@@ -115,7 +115,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-soups-1",
@@ -128,7 +128,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-soups-2",
@@ -141,7 +141,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-soups-3",
@@ -154,7 +154,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-soups-4",
@@ -167,7 +167,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-soups-5",
@@ -180,7 +180,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-1",
@@ -194,7 +194,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": true,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-2",
@@ -208,7 +208,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-3",
@@ -222,7 +222,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-4",
@@ -236,7 +236,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-5",
@@ -250,7 +250,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-6",
@@ -264,7 +264,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-7",
@@ -278,7 +278,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-8",
@@ -292,7 +292,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-9",
@@ -306,7 +306,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-10",
@@ -320,7 +320,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-11",
@@ -334,7 +334,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-12",
@@ -348,7 +348,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-13",
@@ -362,7 +362,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-14",
@@ -376,7 +376,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-15",
@@ -390,7 +390,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-16",
@@ -404,7 +404,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-17",
@@ -418,7 +418,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-18",
@@ -432,7 +432,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-19",
@@ -446,7 +446,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-20",
@@ -460,7 +460,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-21",
@@ -474,7 +474,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": true,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-22",
@@ -488,7 +488,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": true,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-23",
@@ -502,7 +502,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-24",
@@ -516,7 +516,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": true,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-25",
@@ -530,7 +530,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-26",
@@ -544,7 +544,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-27",
@@ -558,7 +558,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": true,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-28",
@@ -572,7 +572,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": true,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-29",
@@ -586,7 +586,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": true,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-30",
@@ -600,7 +600,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-31",
@@ -614,7 +614,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-32",
@@ -628,7 +628,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-33",
@@ -642,7 +642,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-34",
@@ -656,7 +656,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-35",
@@ -670,7 +670,7 @@ export const DISHES: Dish[] = [
     "spicy": true,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-36",
@@ -684,7 +684,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-37",
@@ -698,7 +698,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-38",
@@ -712,7 +712,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-39",
@@ -726,7 +726,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-40",
@@ -740,7 +740,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-41",
@@ -754,7 +754,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-42",
@@ -768,7 +768,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-43",
@@ -782,7 +782,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-44",
@@ -796,7 +796,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-45",
@@ -810,7 +810,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-46",
@@ -824,7 +824,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-47",
@@ -838,7 +838,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-48",
@@ -852,7 +852,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-49",
@@ -866,7 +866,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-50",
@@ -880,7 +880,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-51",
@@ -894,7 +894,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-52",
@@ -908,7 +908,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-53",
@@ -922,7 +922,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": true,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-54",
@@ -936,7 +936,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-55",
@@ -950,7 +950,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": true,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-56",
@@ -964,7 +964,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-57",
@@ -978,7 +978,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-58",
@@ -992,7 +992,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-59",
@@ -1006,7 +1006,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-60",
@@ -1020,7 +1020,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-61",
@@ -1034,7 +1034,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-62",
@@ -1048,7 +1048,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-63",
@@ -1062,7 +1062,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-mains-64",
@@ -1076,7 +1076,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-retro-1",
@@ -1089,7 +1089,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": true,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-retro-2",
@@ -1102,7 +1102,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-drinks-1",
@@ -1115,7 +1115,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-drinks-2",
@@ -1128,7 +1128,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-drinks-3",
@@ -1141,7 +1141,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-drinks-4",
@@ -1154,7 +1154,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-drinks-5",
@@ -1167,7 +1167,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-drinks-6",
@@ -1180,7 +1180,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-drinks-7",
@@ -1193,7 +1193,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-drinks-8",
@@ -1206,7 +1206,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-drinks-9",
@@ -1219,7 +1219,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-drinks-10",
@@ -1232,7 +1232,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-drinks-11",
@@ -1245,7 +1245,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-sides-1",
@@ -1258,7 +1258,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-sides-2",
@@ -1271,7 +1271,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-sides-3",
@@ -1284,7 +1284,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-shop-1",
@@ -1297,7 +1297,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-shop-2",
@@ -1310,7 +1310,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-shop-3",
@@ -1323,7 +1323,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-shop-4",
@@ -1336,7 +1336,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   },
   {
     "id": "dish-shop-5",
@@ -1349,7 +1349,7 @@ export const DISHES: Dish[] = [
     "spicy": false,
     "vegetarian": false,
     "popular": false,
-    "orderUrl": "https://czxoxjz.ikelp.com/rozvoz"
+    "orderUrl": "https://nu86.ikelp.com/rozvoz"
   }
 ];
 

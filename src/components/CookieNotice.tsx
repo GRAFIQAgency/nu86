@@ -24,7 +24,7 @@ export const CookieNotice: React.FC<CookieNoticeProps> = ({
   const [showInstructions, setShowInstructions] = useState(false);
   const isCs = lang === "cs";
 
-  const directUrl = "https://czxoxjz.ikelp.com/rozvoz";
+  const directUrl = "https://nu86.ikelp.com/rozvoz";
 
   const handleOpenDirect = () => {
     if (onOpenDirect) {

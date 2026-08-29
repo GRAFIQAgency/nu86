@@ -19,7 +19,7 @@ export const CookieConsentModal: React.FC<CookieConsentModalProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isCs = lang === "cs";
-  const directUrl = "https://czxoxjz.ikelp.com/rozvoz";
+  const directUrl = "https://nu86.ikelp.com/rozvoz";
 
   useEffect(() => {
     // Show after slight delay when user loads the page if not already consented

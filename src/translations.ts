@@ -18,7 +18,7 @@ export const translations = {
       title1: 'Ochutnejte',
       title2: 'jídlo s příběhem',
       explore: 'Prozkoumat Menu',
-      order: 'Objednat nyní',
+      order: 'Rezervace',
       est: 'EST 2026 // NEO TOKIO',
     },
     menu: {
@@ -262,7 +262,7 @@ export const translations = {
       title1: 'Taste food',
       title2: 'with a story',
       explore: 'Explore Menu',
-      order: 'Order Now',
+      order: 'Reservations',
       est: 'EST 2026 // NEO TOKIO',
     },
     menu: {
